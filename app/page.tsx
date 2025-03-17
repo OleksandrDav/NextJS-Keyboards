@@ -32,71 +32,71 @@ export default function Home() {
                 imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
               },
               {
-                id: 1,
+                id: 2,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
               },
               {
-                id: 1,
+                id: 3,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
               },
               {
-                id: 1,
+                id: 4,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
               },
               {
-                id: 1,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
-              },
-            ]} categoryId={1} />
-            <ProductGroupList title="60% Layout" items={[
-              {
-                id: 1,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
-              },
-              {
-                id: 1,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
-              },
-              {
-                id: 1,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
-              },
-              {
-                id: 1,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
-              },
-              {
-                id: 1,
+                id: 5,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
               },
             ]} categoryId={2} />
+            <ProductGroupList title="75% Layout" items={[
+              {
+                id: 6,
+                name: "Mchoose g87",
+                price: 66,
+                items: [{ price: 66 }],
+                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+              },
+              {
+                id: 7,
+                name: "Mchoose g87",
+                price: 66,
+                items: [{ price: 66 }],
+                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+              },
+              {
+                id: 8,
+                name: "Mchoose g87",
+                price: 66,
+                items: [{ price: 66 }],
+                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+              },
+              {
+                id: 9,
+                name: "Mchoose g87",
+                price: 66,
+                items: [{ price: 66 }],
+                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+              },
+              {
+                id: 10,
+                name: "Mchoose g87",
+                price: 66,
+                items: [{ price: 66 }],
+                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+              },
+            ]} categoryId={3} />
 
           </div>
         </div>
