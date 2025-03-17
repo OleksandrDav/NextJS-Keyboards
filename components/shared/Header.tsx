@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
-import { Container } from './Container';
+import { Container } from './container';
 import Image from 'next/image';
 import { Button } from '../ui';
 import { ArrowRight, ShoppingCart, User } from 'lucide-react';
@@ -15,9 +15,9 @@ export const Header: React.FC<Props> = ({ className }) => {
             <Container className='flex items-center justify-between'>
 
                 {/* Left side */}
-                <div className='flex items-center space-x-4'>
+                <div className='flex items-center space-x-2'>
                     {/* Logo - Smaller on mobile */}
-                    <div className='w-24 md:w-32 lg:w-40'>
+                    <div className='w-24'>
                         <Image 
                             src='/logo.png' 
                             alt='Next Keyboards' 
