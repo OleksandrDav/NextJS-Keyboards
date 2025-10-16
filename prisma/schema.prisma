@@ -1,0 +1,104 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model User {
+    id        Int      @id @default(autoincrement())
+    fullName  String
+    email     String   @unique
+    password  String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    cart      Cart?
+}
+
+model Category {
+    id        Int       @id @default(autoincrement())
+    name      String    @unique
+    products  Product[]
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+}
+
+model Product {
+    id             Int              @id @default(autoincrement())
+    name           String
+    imageUrl       String
+    createdAt      DateTime         @default(now())
+    updatedAt      DateTime         @updatedAt
+    category       Category?        @relation(fields: [categoryId], references: [id])
+    categoryId     Int?
+    ProductVariant ProductVariant[]
+}
+
+model Switch {
+    id             Int              @id @default(autoincrement())
+    name           String
+    imageUrl       String
+    price          Float
+    createdAt      DateTime         @default(now())
+    updatedAt      DateTime         @updatedAt
+    ProductVariant ProductVariant[]
+}
+
+model Color {
+    id             Int              @id @default(autoincrement())
+    name           String           @unique
+    hexCode        String // Для отображения цвета в UI
+    createdAt      DateTime         @default(now())
+    updatedAt      DateTime         @updatedAt
+    ProductVariant ProductVariant[]
+}
+
+model ProductVariant {
+    id        Int      @id @default(autoincrement())
+    product   Product  @relation(fields: [productId], references: [id])
+    productId Int
+    color     Color    @relation(fields: [colorId], references: [id])
+    colorId   Int
+    switch    Switch   @relation(fields: [switchId], references: [id])
+    switchId  Int
+    price     Float
+    inStock   Boolean  @default(true) // В наличии или нет
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([productId, colorId, switchId]) // Гарантирует уникальность вариаций
+}
+
+model Cart {
+    id     Int   @id @default(autoincrement())
+
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int?  @unique
+
+    token String @unique
+
+    totalAmount Float @default(0)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model CartItem {
+    id        Int      @id @default(autoincrement())
+
+    cart      Cart     @relation(fields: [cartId], references: [id])
+    cartId    Int
+
+    productVariant   ProductVariant @relation(fields: [productVariant], references: [id])
+    productVariant Int
+
+    quantity  Int     @default(1)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([cartId, variantId])
+}

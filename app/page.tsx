@@ -29,35 +29,35 @@ export default function Home() {
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
               },
               {
                 id: 2,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
               },
               {
                 id: 3,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
               },
               {
                 id: 4,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
               },
               {
                 id: 5,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
               },
             ]} categoryId={2} />
             <ProductGroupList title="75% Layout" items={[
@@ -66,37 +66,74 @@ export default function Home() {
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
               },
               {
                 id: 7,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
               },
               {
                 id: 8,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
               },
               {
                 id: 9,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
               },
               {
                 id: 10,
                 name: "Mchoose g87",
                 price: 66,
                 items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/Purple_48de50b0-62ff-41e6-aca9-8ddad6ee7636.jpg?v=1739527138&width=800"
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
               },
             ]} categoryId={3} />
+            <ProductGroupList title="65% Layout" items={[
+              {
+                id: 11,
+                name: "Mchoose g87",
+                price: 66,
+                items: [{ price: 66 }],
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
+              },
+              {
+                id: 12,
+                name: "Mchoose g87",
+                price: 66,
+                items: [{ price: 66 }],
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
+              },
+              {
+                id: 13,
+                name: "Mchoose g87",
+                price: 66,
+                items: [{ price: 66 }],
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
+              },
+              {
+                id: 14,
+                name: "Mchoose g87",
+                price: 66,
+                items: [{ price: 66 }],
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
+              },
+              {
+                id: 15,
+                name: "Mchoose g87",
+                price: 66,
+                items: [{ price: 66 }],
+                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000"
+              },
+            ]} categoryId={4} />
 
           </div>
         </div>

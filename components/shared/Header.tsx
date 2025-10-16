@@ -11,7 +11,7 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ className }) => {
     return (
-        <header className={cn('border border-b', className)}>
+        <header className={cn('border-b', className)}>
             <Container className='flex items-center justify-between'>
 
                 {/* Left side */}
@@ -44,14 +44,14 @@ export const Header: React.FC<Props> = ({ className }) => {
                     <div>
                         <Button className='group relative p-2 md:p-2.5'>
                             <b className='hidden md:inline'>65 $</b>
-                            <span className='h-full w-[1px] bg-white/30 mx-3 hidden md:inline' />
+                            <span className='h-full w-[1px] bg-white/30 mx-2 hidden md:inline' />
                             <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
-                                <ShoppingCart size={16} className="relative" strokeWidth={2} />
+                                <ShoppingCart size={16} className="relative mb-0.5" strokeWidth={2} />
                                 <b className='md:inline'>3</b>
                             </div>
                             <ArrowRight
                                 size={20}
-                                className="absolute right-5 transition duration-300 -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 hidden md:block"
+                                className="absolute right-4 transition duration-300 -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 hidden md:block"
                             />
                         </Button>
                     </div>
