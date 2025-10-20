@@ -9,96 +9,227 @@ datasource db {
 }
 
 model User {
-    id        Int      @id @default(autoincrement())
-    fullName  String
-    email     String   @unique
-    password  String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    cart      Cart?
+    id       Int      @id @default(autoincrement())
+    name     String
+    surname  String
+    email    String   @unique
+    password String
+    role     UserRole @default(USER)
+
+    provider        String?           // e.g., "google", "github" for OAuth users
+    providerId      String?           // e.g., OAuth provider user ID
+
+    createdAt        DateTime          @default(now())
+    updatedAt        DateTime          @updatedAt
+    carts            Cart?
+    orders           Order[]
+    verificationCode VerificationCode?
 }
 
-model Category {
-    id        Int       @id @default(autoincrement())
-    name      String    @unique
-    products  Product[]
-    createdAt DateTime  @default(now())
-    updatedAt DateTime  @updatedAt
+model Layout {
+    id        String     @id @default(cuid())
+    name      String     @unique // "ANSI", "ISO", "JIS", "60%", "TKL", "Full-size"
+    keyboards Keyboard[] // one to many
 }
 
-model Product {
-    id             Int              @id @default(autoincrement())
-    name           String
-    imageUrl       String
-    createdAt      DateTime         @default(now())
-    updatedAt      DateTime         @updatedAt
-    category       Category?        @relation(fields: [categoryId], references: [id])
-    categoryId     Int?
-    ProductVariant ProductVariant[]
+model Keyboard {
+    id          String   @id @default(cuid())
+    name        String
+    basePrice   Decimal  @db.Decimal(10, 2)
+    layoutId    String
+    layout      Layout   @relation(fields: [layoutId], references: [id]) // many to one
+    inStock     Boolean  @default(true)
+    description String?  @db.Text
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    // Relations
+    switches      KeyboardSwitch[]
+    colorVariants ColorVariant[]
+    cartItems     CartItem[]
+
+    @@index([inStock])
+    @@index([name])
+    @@index([layoutId])
 }
 
 model Switch {
-    id             Int              @id @default(autoincrement())
-    name           String
+    id            String   @id @default(cuid())
+    name          String   @unique // e.g., "Cherry MX Red", "Gateron Brown"
+    type          String // e.g., "Linear", "Tactile", "Clicky"
+    priceModifier Decimal  @db.Decimal(10, 2) // Additional cost for this switch
+    description   String?  @db.Text
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+
+    // Relations
+    keyboards KeyboardSwitch[]
+    cartItems CartItem[]
+
+    @@index([name])
+}
+
+// Junction table for many-to-many relationship between Keyboards and Switches
+model KeyboardSwitch {
+    id         String   @id @default(cuid())
+    keyboardId String
+    switchId   String
+    createdAt  DateTime @default(now())
+
+    // Relations
+    keyboard Keyboard @relation(fields: [keyboardId], references: [id], onDelete: Cascade)
+    switch   Switch   @relation(fields: [switchId], references: [id], onDelete: Cascade)
+
+    @@unique([keyboardId, switchId])
+    @@index([keyboardId])
+    @@index([switchId])
+}
+
+model ColorVariant {
+    id         String   @id @default(cuid())
+    keyboardId String
+    colorName  String // e.g., "Midnight Black", "Ocean Blue", "Rose Gold"
+    colorHex   String // e.g., "#000000" for visual representation
+    imageUrl   String // Primary image URL for this color
+    isDefault  Boolean  @default(false) // Which color is shown by default
+    sortOrder  Int      @default(0) // For maintaining color order in UI
+    inStock    Boolean  @default(true)
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+
+    // Relations
+    keyboard         Keyboard          @relation(fields: [keyboardId], references: [id], onDelete: Cascade)
+    additionalImages AdditionalImage[]
+    cartItems        CartItem[]
+
+    @@unique([keyboardId, colorName])
+    @@index([keyboardId])
+    @@index([isDefault])
+}
+
+// Optional: Additional images per color variant (multiple angles, close-ups, etc.)
+model AdditionalImage {
+    id             String   @id @default(cuid())
+    colorVariantId String
     imageUrl       String
-    price          Float
-    createdAt      DateTime         @default(now())
-    updatedAt      DateTime         @updatedAt
-    ProductVariant ProductVariant[]
-}
+    altText        String?
+    sortOrder      Int      @default(0)
+    createdAt      DateTime @default(now())
 
-model Color {
-    id             Int              @id @default(autoincrement())
-    name           String           @unique
-    hexCode        String // Для отображения цвета в UI
-    createdAt      DateTime         @default(now())
-    updatedAt      DateTime         @updatedAt
-    ProductVariant ProductVariant[]
-}
+    // Relations
+    colorVariant ColorVariant @relation(fields: [colorVariantId], references: [id], onDelete: Cascade)
 
-model ProductVariant {
-    id        Int      @id @default(autoincrement())
-    product   Product  @relation(fields: [productId], references: [id])
-    productId Int
-    color     Color    @relation(fields: [colorId], references: [id])
-    colorId   Int
-    switch    Switch   @relation(fields: [switchId], references: [id])
-    switchId  Int
-    price     Float
-    inStock   Boolean  @default(true) // В наличии или нет
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    @@unique([productId, colorId, switchId]) // Гарантирует уникальность вариаций
+    @@index([colorVariantId])
 }
 
 model Cart {
-    id     Int   @id @default(autoincrement())
+    id          Int     @id @default(autoincrement())
+    user        User?   @relation(fields: [userId], references: [id])
+    userId      Int?    @unique
+    token       String  @unique
+    totalAmount Decimal @default(0) @db.Decimal(10, 2)
 
-    user   User? @relation(fields: [userId], references: [id])
-    userId Int?  @unique
-
-    token String @unique
-
-    totalAmount Float @default(0)
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
+    CartItems CartItem[]
 }
 
 model CartItem {
-    id        Int      @id @default(autoincrement())
+    id Int @id @default(autoincrement())
 
-    cart      Cart     @relation(fields: [cartId], references: [id])
-    cartId    Int
+    cart   Cart @relation(fields: [cartId], references: [id], onDelete: Cascade)
+    cartId Int
 
-    productVariant   ProductVariant @relation(fields: [productVariant], references: [id])
-    productVariant Int
+    keyboard   Keyboard @relation(fields: [keyboardId], references: [id])
+    keyboardId String
 
-    quantity  Int     @default(1)
+    colorVariant   ColorVariant @relation(fields: [colorVariantId], references: [id])
+    colorVariantId String
+
+    switch   Switch @relation(fields: [switchId], references: [id])
+    switchId String
+
+    quantity Int     @default(1)
+    price    Decimal @db.Decimal(10, 2) // Snapshot of price at time of adding to cart
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    @@unique([cartId, variantId])
+    @@unique([cartId, keyboardId, colorVariantId, switchId]) // Prevent duplicate items
+    @@index([cartId])
+    @@index([keyboardId])
+}
+
+model Order {
+    id Int @id @default(autoincrement())
+
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int?
+
+    token String? // For guest orders
+
+    // Order status
+    status        OrderStatus   @default(PENDING)
+    // Payment information
+    paymentStatus PaymentStatus @default(PENDING)
+    paymentId     String?
+
+    // Items stored as JSON
+    items Json
+
+    // Pricing
+    totalAmount Decimal @db.Decimal(10, 2)
+
+    // Shipping information
+    fullName   String
+    email      String
+    phone      String
+    address    String
+    city       String
+    postalCode String
+    country    String
+
+    // Optional delivery notes
+    deliveryNotes String? @db.Text
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([userId])
+    @@index([status])
+    @@index([createdAt])
+}
+
+model VerificationCode {
+    id Int @id @default(autoincrement())
+
+    user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId Int  @unique
+
+    code String // The verification code
+
+    createdAt DateTime @default(now())
+}
+
+enum OrderStatus {
+    PENDING // Order created, waiting for payment
+    CONFIRMED // Payment received, processing
+    PROCESSING // Being prepared
+    SHIPPED // On the way
+    DELIVERED // Completed
+    CANCELLED // Cancelled by user or admin
+    REFUNDED // Refunded
+}
+
+enum PaymentStatus {
+    PENDING // Waiting for payment
+    PROCESSING // Payment being processed
+    SUCCEEDED // Payment successful
+    FAILED // Payment failed
+    REFUNDED // Payment refunded
+}
+
+enum UserRole {
+    USER
+    ADMIN
 }

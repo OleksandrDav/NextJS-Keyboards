@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { useIntersection } from 'react-use';
 import { Title } from './title';
 import { cn } from '@/lib/utils';
-import { ProductCart } from './product-cart';
+import { ProductCard } from './product-card';
 import { useCategoryStore } from '@/store/category';
 
 interface Props {
@@ -36,12 +36,13 @@ export const ProductGroupList: React.FC<Props> = ({ title, items, listClassName,
 
             <div className={cn('grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3', listClassName)}>
                 {items.map((product, index) => (
-                    <ProductCart
+                    <ProductCard
                         key={product.id}
                         id={product.id}
                         name={product.name}
                         price={product.items[0].price}
                         imageUrl={product.imageUrl}
+                        colors={product.colors}
                     />
                 ))}
             </div>
