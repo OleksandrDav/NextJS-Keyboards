@@ -16,7 +16,7 @@ const colorItems = [
   { text: "Green", value: "green" },
   { text: "Black", value: "black" },
   { text: "White", value: "white" },
-  { text: "Purple", value: "purple" },
+  { text: "Pink", value: "pink" },
   { text: "Orange", value: "orange" },
 ];
 

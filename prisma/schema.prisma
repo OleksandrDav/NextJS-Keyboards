@@ -15,6 +15,7 @@ model User {
     email    String   @unique
     password String
     role     UserRole @default(USER)
+    verified DateTime?
 
     provider        String?           // e.g., "google", "github" for OAuth users
     providerId      String?           // e.g., OAuth provider user ID
@@ -30,6 +31,9 @@ model Layout {
     id        String     @id @default(cuid())
     name      String     @unique // "ANSI", "ISO", "JIS", "60%", "TKL", "Full-size"
     keyboards Keyboard[] // one to many
+
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }
 
 model Keyboard {
@@ -44,7 +48,7 @@ model Keyboard {
     updatedAt   DateTime @updatedAt
 
     // Relations
-    switches      KeyboardSwitch[]
+    switches      Switch[]       // Implicit many-to-many
     colorVariants ColorVariant[]
     cartItems     CartItem[]
 
@@ -63,26 +67,10 @@ model Switch {
     updatedAt     DateTime @updatedAt
 
     // Relations
-    keyboards KeyboardSwitch[]
+    keyboards Keyboard[] // Implicit many-to-many
     cartItems CartItem[]
 
     @@index([name])
-}
-
-// Junction table for many-to-many relationship between Keyboards and Switches
-model KeyboardSwitch {
-    id         String   @id @default(cuid())
-    keyboardId String
-    switchId   String
-    createdAt  DateTime @default(now())
-
-    // Relations
-    keyboard Keyboard @relation(fields: [keyboardId], references: [id], onDelete: Cascade)
-    switch   Switch   @relation(fields: [switchId], references: [id], onDelete: Cascade)
-
-    @@unique([keyboardId, switchId])
-    @@index([keyboardId])
-    @@index([switchId])
 }
 
 model ColorVariant {
@@ -131,7 +119,7 @@ model Cart {
 
     createdAt DateTime   @default(now())
     updatedAt DateTime   @updatedAt
-    CartItems CartItem[]
+    cartItems CartItem[]
 }
 
 model CartItem {

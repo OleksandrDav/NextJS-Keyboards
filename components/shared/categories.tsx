@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/utils';
+import { cn, createSlug } from '@/lib/utils';
 import { useCategoryStore } from '@/store/category';
 import React from 'react';
 
@@ -20,15 +20,21 @@ export const Categories: React.FC<Props> = ({ className }) => {
     const categoryActiveId = useCategoryStore((state) => state.activeId);
     return (
         <div className={cn('inline-flex gap-1 bg-gray-50 p-1 rounded-2xl', className)}>
-            {cats.map(({name, id}, index) => (
-                <a className={cn(
-                    'flex item-center font-bold h-11 rounded-2xl px-5',
-                    categoryActiveId === id && 'bg-white shadow-md shadow-gray-200 text-primary h-11 ')} href={`/#${name}`} key={index}>
-                    <button>
+            {cats.map(({name, id}) => {
+                const slug = createSlug(name);
+                return (
+                    <a 
+                        className={cn(
+                            'flex items-center font-bold h-11 rounded-2xl px-5',
+                            categoryActiveId === id && 'bg-white shadow-md shadow-gray-200 text-primary'
+                        )} 
+                        href={`#${slug}`} 
+                        key={id}
+                    >
                         {name}
-                    </button>
-                </a>
-            ))}
+                    </a>
+                );
+            })}
         </div>
     );
 };

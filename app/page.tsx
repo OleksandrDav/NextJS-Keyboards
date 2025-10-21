@@ -30,7 +30,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 2,
@@ -38,7 +38,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 3,
@@ -46,7 +46,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 4,
@@ -54,7 +54,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 5,
@@ -62,7 +62,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
             ]} categoryId={2} />
             <ProductGroupList title="75% Layout" items={[
@@ -72,7 +72,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 7,
@@ -80,7 +80,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 8,
@@ -88,7 +88,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 9,
@@ -96,7 +96,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 10,
@@ -104,7 +104,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
             ]} categoryId={3} />
             <ProductGroupList title="65% Layout" items={[
@@ -114,7 +114,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 12,
@@ -122,7 +122,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 13,
@@ -130,7 +130,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 14,
@@ -138,7 +138,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
               {
                 id: 15,
@@ -146,7 +146,7 @@ export default function Home() {
                 price: 66,
                 items: [{ price: 66 }],
                 imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "purple", "blue"]
+                colors: ["black", "white", "pink", "blue"]
               },
             ]} categoryId={4} />
 

@@ -9,7 +9,7 @@ const COLOR_MAP: Record<string, string> = {
   green: "#22C55E",
   black: "#000000",
   white: "#E5E7EB",
-  purple: "#A855F7",
+  pink: "#EC4899",
   orange: "#F97316",
 };
 

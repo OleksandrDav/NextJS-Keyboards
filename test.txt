@@ -1,0 +1,427 @@
+Create for me seed, do not create for Order, VerificationCode and AdditionalImage.  Switches create how you want. Prices and price modifiers also how you want. 
+
+Base info of products:
+
+98 layout:
+
+MCHOSE x Unbox Therapy - UT98 Mechanical Keyboard
+
+white image - https://www.mchose.store/cdn/shop/files/HW-UT98-2MCHOSEUT98ClassicTherapySilentPeachV3Switch.png?v=1755513039&width=1000
+
+orange  image - https://www.mchose.store/cdn/shop/files/HW-UT98-4MCHOSEUT98RetroTherapySilentPeachV3Switch.png?v=1755513039&width=1000
+
+MCHOSE K99 V2 Wireless Gasket Mount Mechanical Keyboard
+
+white image - https://www.mchose.store/cdn/shop/files/mchose-official-retro-white-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639466.jpg?v=1754474559&width=1000
+
+blue image -  https://www.mchose.store/cdn/shop/files/mchose-official-sky-blue-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639456.jpg?v=1754474550&width=1000
+
+orange image - https://www.mchose.store/cdn/shop/files/mchose-official-horizon-orange-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639457.jpg?v=1754474552&width=1000
+
+black image - https://www.mchose.store/cdn/shop/files/mchose-official-mountains-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639454.jpg?v=1754474555&width=1000
+
+pink image - https://www.mchose.store/cdn/shop/files/mchose-official-pink-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639452.jpg?v=1754474558&width=1000
+
+MCHOSE G98 Pro Wireless Tri-Mode Custom Mechanical Gaming Keyboard
+
+blue image - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-blue-flame-orange-switch-mchose-g98-pro-wireless-tri-mode-custom-mechanical-gaming-keyboard-1166639808.jpg?v=1755569473&width=1000
+
+black image - https://www.mchose.store/cdn/shop/files/HW-G98S-5_785b7d80-4ae2-48f4-8e1a-aa648afb0766.png?v=1755569473&width=1000
+
+white image - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-gray-and-blue-flame-orange-switch-mchose-g98-pro-wireless-tri-mode-custom-mechanical-gaming-keyboard-1166639807.jpg?v=1755569473&width=1000
+
+80 layout:
+
+MCHOSE K87S Custom Mechanical Gaming Keyboard
+
+black - https://www.mchose.store/cdn/shop/files/K87SMountainsGradient.jpg?v=1759915238&width=1000
+
+pink - https://www.mchose.store/cdn/shop/files/K87SPeachGradient.jpg?v=1759915238&width=1000
+
+MCHOSE Mix 87 Hall Effect Magnetic Switch Gaming Keyboard
+
+black - https://www.mchose.store/cdn/shop/files/mchose-official-black-apollo-magnetic-switch-mchose-mix-87-hall-effect-magnetic-switch-gaming-keyboard-1177461523.jpg?v=1754474655&width=1000
+
+white - https://www.mchose.store/cdn/shop/files/mchose-official-white-apollo-magnetic-switch-mchose-mix-87-hall-effect-magnetic-switch-gaming-keyboard-1177461525.jpg?v=1754474651&width=1000
+
+pink - https://www.mchose.store/cdn/shop/files/mchose-official-rose-red-apollo-magnetic-switch-mchose-mix-87-hall-effect-magnetic-switch-gaming-keyboard-1177461524.jpg?v=1754474653&width=1000
+
+MCHOSE GX87S Aluminum Custom Mechanical Keyboard
+
+black - https://www.mchose.store/cdn/shop/files/mchose-official-mountains-gradient-mist-blue-switch-mchose-gx87s-aluminum-custom-mechanical-keyboard-1166639623.png?v=1754474595&width=1000
+
+white - https://www.mchose.store/cdn/shop/files/mchose-official-milky-brown-mist-blue-switch-mchose-gx87s-aluminum-custom-mechanical-keyboard-1166639622.png?v=1754474597&width=1000
+
+MCHOSE G87 Wireless Gasket Mount Custom Mechanical Keyboard
+
+black - https://www.mchose.store/cdn/shop/files/mchose-official-keyboards-black-topographic-ice-blue-switch-mchose-g87-wireless-gasket-mount-custom-mechanical-keyboard-1166639679.jpg?v=1754474364&width=1000
+
+white - https://www.mchose.store/cdn/shop/files/mchose-official-keyboards-mchose-g87-wireless-gasket-mount-custom-mechanical-keyboard-1166639680.jpg?v=1754474362&width=1000
+
+pink - https://www.mchose.store/cdn/shop/files/mchose-official-keyboards-mchose-g87-wireless-gasket-mount-custom-mechanical-keyboard-1166639426.jpg?v=1754474366&width=1000
+
+blue - https://www.mchose.store/cdn/shop/files/mchose-official-keyboards-mchose-g87-wireless-gasket-mount-custom-mechanical-keyboard-1166639429.jpg?v=1754474372&width=1000
+
+75 layout:
+
+MCHOSE G75 Pro Tri-mode Gasket Structure Gaming Mechanical Keyboard
+
+green - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-green-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639824.jpg?v=1754474106&width=1000
+
+blue - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-arctic-snow-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639833.jpg?v=1754474090&width=1000
+
+black - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-black-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639837.jpg?v=1754474083&width=1000
+
+pink - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-white-pink-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639836.jpg?v=1754474084&width=1000
+
+orange - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-grey-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639822.jpg?v=1754474109&width=1000
+
+white - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-white-topographic-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639575.jpg?v=1756089904&width=1000
+
+MCHOSE Jet 75 Hall Effect Magnetic Switch Gaming Keyboard
+
+white - https://www.mchose.store/cdn/shop/files/mchose-official-white-kailh-magnetic-god-switch-mchose-jet-75-hall-effect-magnetic-switch-gaming-keyboard-1166639420.jpg?v=1754474583&width=1000
+
+pink - https://www.mchose.store/cdn/shop/files/mchose-official-rose-red-kailh-magnetic-god-switch-mchose-jet-75-hall-effect-magnetic-switch-gaming-keyboard-1166639424.jpg?v=1754474587&width=1000
+
+black - https://www.mchose.store/cdn/shop/files/mchose-official-black-topographic-starburst-magnetic-switch-mchose-jet-75-hall-effect-magnetic-switch-gaming-keyboard-1166639422.jpg?v=1754474579&width=1000
+
+MCHOSE X75 V2 Custom Mechanical Keyboard for Office & Gaming
+
+green - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-green-hyacinth-switch-mchose-x75-v2-custom-mechanical-keyboard-for-office-gaming-1166639786.jpg?v=1754474182&width=1000
+
+pink - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-pink-hyacinth-switch-mchose-x75-v2-custom-mechanical-keyboard-for-office-gaming-1166639785.jpg?v=1754474185&width=1000
+
+blue - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-blue-hyacinth-switch-mchose-x75-v2-custom-mechanical-keyboard-for-office-gaming-1166639784.jpg?v=1754474186&width=1000
+
+white - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-retro-white-hyacinth-switch-mchose-x75-v2-custom-mechanical-keyboard-for-office-gaming-1166639783.png?v=1754474189&width=1000
+
+MCHOSE Z75S Metal Top Cover Wireless Mechanical Keyboard
+
+white - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-z75s-metal-top-cover-wireless-mechanical-keyboard-1166639744.jpg?v=1754474266&width=1000
+
+orange - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-z75s-metal-top-cover-wireless-mechanical-keyboard-1166639746.jpg?v=1758939461&width=1000
+
+pink - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-z75s-metal-top-cover-wireless-mechanical-keyboard-1166639745.jpg?v=1754474264&width=1000
+
+black - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-z75s-metal-top-cover-wireless-mechanical-keyboard-1166639743.jpg?v=1754474268&width=1000
+
+MCHOSE X75 Wireless Gasket Mount Mechanical Special Edition Thai Keyboard
+
+blue - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-x75-wireless-gasket-mount-mechanical-special-edition-thai-keyboard-1166639768.jpg?v=1754474216&width=1000
+
+65 layout: empty 
+
+60 layout: 
+
+MCHOSE Ace 60 Hall Effect Magnetic Switch Gaming Keyboard
+
+black - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-ace-60-hall-effect-magnetic-switch-gaming-keyboard-1166639723.jpg?v=1754474316&width=1000
+
+white - https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-ace-60-hall-effect-magnetic-switch-gaming-keyboard-1166639722.jpg?v=1754474318&width=1000
+
+I also have 3 files: seed.ts, schema.prisma and constants.ts
+
+//constants.ts
+export const layouts = [
+    { name: '98% Layout' },
+    { name: '80% Layout' },
+    { name: '75% Layout' },
+    { name: '65% Layout' },
+    { name: '60% Layout' }
+];
+
+import { layouts } from "./constants";
+import { prisma } from "./prisma-client";
+import { hashSync } from "bcrypt";
+
+
+async function up() {
+    await prisma.user.createMany({
+        data: [
+            {
+                name: "Alice",
+                surname: "Smith",
+                email: "alice@prisma.io",
+                password: hashSync("securepassword1", 10),
+                verified: new Date(),
+                role: "ADMIN",
+            },
+            {
+                name: "Bob",
+                surname: "Johnson",
+                email: "bob@prisma.io",
+                password: hashSync("securepassword2", 10),
+                verified: new Date(),
+                role: "USER",
+            },
+        ]
+    })
+
+    await prisma.layout.createMany({
+        data: layouts
+    })
+}
+
+async function down() {
+    await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
+    await prisma.$executeRaw`TRUNCATE TABLE "Layout" RESTART IDENTITY CASCADE`;
+}
+
+async function main() {
+  try {
+    await down();
+    await up();
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+main()
+  .then(async () => {
+    await prisma.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model User {
+    id       Int      @id @default(autoincrement())
+    name     String
+    surname  String
+    email    String   @unique
+    password String
+    role     UserRole @default(USER)
+    verified DateTime?
+
+    provider        String?           // e.g., "google", "github" for OAuth users
+    providerId      String?           // e.g., OAuth provider user ID
+
+    createdAt        DateTime          @default(now())
+    updatedAt        DateTime          @updatedAt
+    carts            Cart?
+    orders           Order[]
+    verificationCode VerificationCode?
+}
+
+model Layout {
+    id        String     @id @default(cuid())
+    name      String     @unique // "ANSI", "ISO", "JIS", "60%", "TKL", "Full-size"
+    keyboards Keyboard[] // one to many
+
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model Keyboard {
+    id          String   @id @default(cuid())
+    name        String
+    basePrice   Decimal  @db.Decimal(10, 2)
+    layoutId    String
+    layout      Layout   @relation(fields: [layoutId], references: [id]) // many to one
+    inStock     Boolean  @default(true)
+    description String?  @db.Text
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    // Relations
+    switches      KeyboardSwitch[]
+    colorVariants ColorVariant[]
+    cartItems     CartItem[]
+
+    @@index([inStock])
+    @@index([name])
+    @@index([layoutId])
+}
+
+model Switch {
+    id            String   @id @default(cuid())
+    name          String   @unique // e.g., "Cherry MX Red", "Gateron Brown"
+    type          String // e.g., "Linear", "Tactile", "Clicky"
+    priceModifier Decimal  @db.Decimal(10, 2) // Additional cost for this switch
+    description   String?  @db.Text
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+
+    // Relations
+    keyboards KeyboardSwitch[]
+    cartItems CartItem[]
+
+    @@index([name])
+}
+
+// Junction table for many-to-many relationship between Keyboards and Switches
+model KeyboardSwitch {
+    id         String   @id @default(cuid())
+    keyboardId String
+    switchId   String
+    createdAt  DateTime @default(now())
+
+    // Relations
+    keyboard Keyboard @relation(fields: [keyboardId], references: [id], onDelete: Cascade)
+    switch   Switch   @relation(fields: [switchId], references: [id], onDelete: Cascade)
+
+    @@unique([keyboardId, switchId])
+    @@index([keyboardId])
+    @@index([switchId])
+}
+
+model ColorVariant {
+    id         String   @id @default(cuid())
+    keyboardId String
+    colorName  String // e.g., "Midnight Black", "Ocean Blue", "Rose Gold"
+    colorHex   String // e.g., "#000000" for visual representation
+    imageUrl   String // Primary image URL for this color
+    isDefault  Boolean  @default(false) // Which color is shown by default
+    sortOrder  Int      @default(0) // For maintaining color order in UI
+    inStock    Boolean  @default(true)
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+
+    // Relations
+    keyboard         Keyboard          @relation(fields: [keyboardId], references: [id], onDelete: Cascade)
+    additionalImages AdditionalImage[]
+    cartItems        CartItem[]
+
+    @@unique([keyboardId, colorName])
+    @@index([keyboardId])
+    @@index([isDefault])
+}
+
+// Optional: Additional images per color variant (multiple angles, close-ups, etc.)
+model AdditionalImage {
+    id             String   @id @default(cuid())
+    colorVariantId String
+    imageUrl       String
+    altText        String?
+    sortOrder      Int      @default(0)
+    createdAt      DateTime @default(now())
+
+    // Relations
+    colorVariant ColorVariant @relation(fields: [colorVariantId], references: [id], onDelete: Cascade)
+
+    @@index([colorVariantId])
+}
+
+model Cart {
+    id          Int     @id @default(autoincrement())
+    user        User?   @relation(fields: [userId], references: [id])
+    userId      Int?    @unique
+    token       String  @unique
+    totalAmount Decimal @default(0) @db.Decimal(10, 2)
+
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
+    cartItems CartItem[]
+}
+
+model CartItem {
+    id Int @id @default(autoincrement())
+
+    cart   Cart @relation(fields: [cartId], references: [id], onDelete: Cascade)
+    cartId Int
+
+    keyboard   Keyboard @relation(fields: [keyboardId], references: [id])
+    keyboardId String
+
+    colorVariant   ColorVariant @relation(fields: [colorVariantId], references: [id])
+    colorVariantId String
+
+    switch   Switch @relation(fields: [switchId], references: [id])
+    switchId String
+
+    quantity Int     @default(1)
+    price    Decimal @db.Decimal(10, 2) // Snapshot of price at time of adding to cart
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([cartId, keyboardId, colorVariantId, switchId]) // Prevent duplicate items
+    @@index([cartId])
+    @@index([keyboardId])
+}
+
+model Order {
+    id Int @id @default(autoincrement())
+
+    user   User? @relation(fields: [userId], references: [id])
+    userId Int?
+
+    token String? // For guest orders
+
+    // Order status
+    status        OrderStatus   @default(PENDING)
+    // Payment information
+    paymentStatus PaymentStatus @default(PENDING)
+    paymentId     String?
+
+    // Items stored as JSON
+    items Json
+
+    // Pricing
+    totalAmount Decimal @db.Decimal(10, 2)
+
+    // Shipping information
+    fullName   String
+    email      String
+    phone      String
+    address    String
+    city       String
+    postalCode String
+    country    String
+
+    // Optional delivery notes
+    deliveryNotes String? @db.Text
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([userId])
+    @@index([status])
+    @@index([createdAt])
+}
+
+model VerificationCode {
+    id Int @id @default(autoincrement())
+
+    user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId Int  @unique
+
+    code String // The verification code
+
+    createdAt DateTime @default(now())
+}
+
+enum OrderStatus {
+    PENDING // Order created, waiting for payment
+    CONFIRMED // Payment received, processing
+    PROCESSING // Being prepared
+    SHIPPED // On the way
+    DELIVERED // Completed
+    CANCELLED // Cancelled by user or admin
+    REFUNDED // Refunded
+}
+
+enum PaymentStatus {
+    PENDING // Waiting for payment
+    PROCESSING // Payment being processed
+    SUCCEEDED // Payment successful
+    FAILED // Payment failed
+    REFUNDED // Payment refunded
+}
+
+enum UserRole {
+    USER
+    ADMIN
+}
