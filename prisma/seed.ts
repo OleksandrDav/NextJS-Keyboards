@@ -60,7 +60,6 @@ async function up() {
         basePrice: keyboard.basePrice,
         description: keyboard.description,
         layoutId: layout.id,
-        inStock: true,
         switches: {
           connect: keyboardSwitches.map((s) => ({ id: s.id })),
         },
@@ -71,7 +70,7 @@ async function up() {
             imageUrl: variant.imageUrl,
             isDefault: variant.isDefault || false,
             sortOrder: index,
-            inStock: true,
+            inStock: variant.inStock,
           })),
         },
       },
@@ -85,21 +84,17 @@ async function up() {
   const allKeyboards = await prisma.keyboard.findMany({
     include: {
       colorVariants: true,
+      switches: true,
     },
   });
-  const allSwitches = await prisma.switch.findMany();
 
   if (users.length > 0 && allKeyboards.length > 0) {
     // Create cart for Bob
     const bob = users.find((u) => u.email === "bob@prisma.io");
     if (bob && allKeyboards[0]) {
       const keyboard = allKeyboards[0];
-      const colorVariant = keyboard.colorVariants[0];
-      
-      // Get the actual switch record
-      const switchOption = allSwitches.find((s) => 
-        switches.some(cs => cs.name === s.name && keyboards[0].switches.includes(cs.name))
-      );
+      const colorVariant = keyboard.colorVariants.find((cv) => cv.inStock);
+      const switchOption = keyboard.switches.find((s) => s.inStock);
 
       if (colorVariant && switchOption) {
         const cartPrice =
@@ -130,12 +125,8 @@ async function up() {
     // Create guest cart
     if (allKeyboards[1]) {
       const keyboard = allKeyboards[1];
-      const colorVariant = keyboard.colorVariants[0];
-      
-      // Get the actual switch record
-      const switchOption = allSwitches.find((s) => 
-        switches.some(cs => cs.name === s.name && keyboards[1].switches.includes(cs.name))
-      );
+      const colorVariant = keyboard.colorVariants.find((cv) => cv.inStock);
+      const switchOption = keyboard.switches.find((s) => s.inStock);
 
       if (colorVariant && switchOption) {
         const cartPrice =

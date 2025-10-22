@@ -9,16 +9,16 @@ datasource db {
 }
 
 model User {
-    id       Int      @id @default(autoincrement())
+    id       Int       @id @default(autoincrement())
     name     String
     surname  String
-    email    String   @unique
+    email    String    @unique
     password String
-    role     UserRole @default(USER)
+    role     UserRole  @default(USER)
     verified DateTime?
 
-    provider        String?           // e.g., "google", "github" for OAuth users
-    providerId      String?           // e.g., OAuth provider user ID
+    provider   String? // e.g., "google", "github" for OAuth users
+    providerId String? // e.g., OAuth provider user ID
 
     createdAt        DateTime          @default(now())
     updatedAt        DateTime          @updatedAt
@@ -32,8 +32,8 @@ model Layout {
     name      String     @unique // "ANSI", "ISO", "JIS", "60%", "TKL", "Full-size"
     keyboards Keyboard[] // one to many
 
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
 model Keyboard {
@@ -42,17 +42,15 @@ model Keyboard {
     basePrice   Decimal  @db.Decimal(10, 2)
     layoutId    String
     layout      Layout   @relation(fields: [layoutId], references: [id]) // many to one
-    inStock     Boolean  @default(true)
     description String?  @db.Text
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
 
     // Relations
-    switches      Switch[]       // Implicit many-to-many
+    switches      Switch[] // Implicit many-to-many
     colorVariants ColorVariant[]
     cartItems     CartItem[]
 
-    @@index([inStock])
     @@index([name])
     @@index([layoutId])
 }
@@ -62,6 +60,7 @@ model Switch {
     name          String   @unique // e.g., "Cherry MX Red", "Gateron Brown"
     type          String // e.g., "Linear", "Tactile", "Clicky"
     priceModifier Decimal  @db.Decimal(10, 2) // Additional cost for this switch
+    inStock       Boolean  @default(true)
     description   String?  @db.Text
     createdAt     DateTime @default(now())
     updatedAt     DateTime @updatedAt
