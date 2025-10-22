@@ -24,6 +24,7 @@ export const keyboards = [
   {
     name: "MCHOSE x Unbox Therapy - UT98 Mechanical Keyboard",
     basePrice: 129.99,
+    discountPercentage: 15, // ON SALE - 15% off
     layout: "98% Layout",
     description: "Premium 98% mechanical keyboard with Silent Peach V3 switches, featuring a collaboration design with Unbox Therapy.",
     switches: ["Silent Peach V3", "Icy Creamsicle", "Flame Orange"],
@@ -35,6 +36,7 @@ export const keyboards = [
   {
     name: "MCHOSE K99 V2 Wireless Gasket Mount Mechanical Keyboard",
     basePrice: 149.99,
+    discountPercentage: 0, // Not on sale
     layout: "98% Layout",
     description: "Wireless 98% keyboard with premium gasket mount design for superior typing feel and acoustics.",
     switches: ["Icy Creamsicle", "Mist Blue", "Hyacinth"],
@@ -49,6 +51,7 @@ export const keyboards = [
   {
     name: "MCHOSE G98 Pro Wireless Tri-Mode Custom Mechanical Gaming Keyboard",
     basePrice: 159.99,
+    discountPercentage: 20, // ON SALE - 20% off
     layout: "98% Layout",
     description: "Professional gaming keyboard with tri-mode connectivity (2.4GHz, Bluetooth, Wired) and Flame Orange switches.",
     switches: ["Flame Orange", "Mist Blue", "Hyacinth"],
@@ -62,6 +65,7 @@ export const keyboards = [
   {
     name: "MCHOSE K87S Custom Mechanical Gaming Keyboard",
     basePrice: 89.99,
+    discountPercentage: 10, // ON SALE - 10% off
     layout: "80% Layout",
     description: "Compact TKL gaming keyboard with premium build quality and customizable RGB lighting.",
     switches: ["Icy Creamsicle", "Mist Blue", "Ice Blue"],
@@ -73,6 +77,7 @@ export const keyboards = [
   {
     name: "MCHOSE Mix 87 Hall Effect Magnetic Switch Gaming Keyboard",
     basePrice: 139.99,
+    discountPercentage: 0, // Not on sale
     layout: "80% Layout",
     description: "Advanced hall effect keyboard with Apollo Magnetic switches for ultimate gaming performance.",
     switches: ["Apollo Magnetic", "Kailh Magnetic God", "Starburst Magnetic"],
@@ -85,6 +90,7 @@ export const keyboards = [
   {
     name: "MCHOSE GX87S Aluminum Custom Mechanical Keyboard",
     basePrice: 119.99,
+    discountPercentage: 25, // ON SALE - 25% off
     layout: "80% Layout",
     description: "Premium aluminum construction with Mist Blue switches for a luxurious typing experience.",
     switches: ["Mist Blue", "Icy Creamsicle", "Hyacinth"],
@@ -96,6 +102,7 @@ export const keyboards = [
   {
     name: "MCHOSE G87 Wireless Gasket Mount Custom Mechanical Keyboard",
     basePrice: 109.99,
+    discountPercentage: 0, // Not on sale
     layout: "80% Layout",
     description: "Wireless TKL with gasket mount structure and Ice Blue tactile switches.",
     switches: ["Ice Blue", "Matcha Latte", "Icy Creamsicle"],
@@ -110,6 +117,7 @@ export const keyboards = [
   {
     name: "MCHOSE G75 Pro Tri-mode Gasket Structure Gaming Mechanical Keyboard",
     basePrice: 119.99,
+    discountPercentage: 12, // ON SALE - 12% off
     layout: "75% Layout",
     description: "Compact 75% gaming keyboard with tri-mode connectivity and Matcha Latte tactile switches.",
     switches: ["Matcha Latte", "Ice Blue", "Hyacinth"],
@@ -125,6 +133,7 @@ export const keyboards = [
   {
     name: "MCHOSE Jet 75 Hall Effect Magnetic Switch Gaming Keyboard",
     basePrice: 149.99,
+    discountPercentage: 18, // ON SALE - 18% off
     layout: "75% Layout",
     description: "High-performance 75% keyboard with Kailh Magnetic God switches for competitive gaming.",
     switches: ["Kailh Magnetic God", "Starburst Magnetic", "Apollo Magnetic"],
@@ -137,6 +146,7 @@ export const keyboards = [
   {
     name: "MCHOSE X75 V2 Custom Mechanical Keyboard for Office & Gaming",
     basePrice: 99.99,
+    discountPercentage: 0, // Not on sale
     layout: "75% Layout",
     description: "Versatile 75% keyboard with Hyacinth switches, perfect for both office work and gaming.",
     switches: ["Hyacinth", "Icy Creamsicle", "Matcha Latte"],
@@ -150,6 +160,7 @@ export const keyboards = [
   {
     name: "MCHOSE Z75S Metal Top Cover Wireless Mechanical Keyboard",
     basePrice: 129.99,
+    discountPercentage: 8, // ON SALE - 8% off
     layout: "75% Layout",
     description: "Premium wireless 75% keyboard with durable metal top cover and versatile switch options.",
     switches: ["Icy Creamsicle", "Hyacinth", "Mist Blue"],
@@ -163,6 +174,7 @@ export const keyboards = [
   {
     name: "MCHOSE X75 Wireless Gasket Mount Mechanical Special Edition Thai Keyboard",
     basePrice: 109.99,
+    discountPercentage: 0, // Not on sale
     layout: "75% Layout",
     description: "Special edition 75% keyboard with Thai keycaps and premium gasket mount design.",
     switches: ["Hyacinth", "Matcha Latte", "Ice Blue"],
@@ -174,6 +186,7 @@ export const keyboards = [
   {
     name: "MCHOSE Ace 60 Hall Effect Magnetic Switch Gaming Keyboard",
     basePrice: 129.99,
+    discountPercentage: 15, // ON SALE - 15% off
     layout: "60% Layout",
     description: "Ultra-compact 60% gaming keyboard with hall effect magnetic switches for rapid actuation.",
     switches: ["Apollo Magnetic", "Kailh Magnetic God", "Starburst Magnetic"],

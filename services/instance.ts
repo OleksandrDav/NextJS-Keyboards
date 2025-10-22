@@ -1,3 +1,4 @@
+// file - Configures the Axios instance with a base URL and headers.
 import axios from 'axios';
 
 export const axiosInstance = axios.create({

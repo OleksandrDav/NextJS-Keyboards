@@ -58,6 +58,7 @@ async function up() {
       data: {
         name: keyboard.name,
         basePrice: keyboard.basePrice,
+        discountPercentage: keyboard.discountPercentage, // Added discount field
         description: keyboard.description,
         layoutId: layout.id,
         switches: {
@@ -97,8 +98,12 @@ async function up() {
       const switchOption = keyboard.switches.find((s) => s.inStock);
 
       if (colorVariant && switchOption) {
-        const cartPrice =
-          Number(keyboard.basePrice) + Number(switchOption.priceModifier);
+        // Calculate price with discount
+        const basePrice = Number(keyboard.basePrice);
+        const switchPrice = Number(switchOption.priceModifier);
+        const subtotal = basePrice + switchPrice;
+        const discountAmount = (subtotal * keyboard.discountPercentage) / 100;
+        const cartPrice = subtotal - discountAmount;
 
         await prisma.cart.create({
           data: {
@@ -129,8 +134,12 @@ async function up() {
       const switchOption = keyboard.switches.find((s) => s.inStock);
 
       if (colorVariant && switchOption) {
-        const cartPrice =
-          Number(keyboard.basePrice) + Number(switchOption.priceModifier);
+        // Calculate price with discount
+        const basePrice = Number(keyboard.basePrice);
+        const switchPrice = Number(switchOption.priceModifier);
+        const subtotal = basePrice + switchPrice;
+        const discountAmount = (subtotal * keyboard.discountPercentage) / 100;
+        const cartPrice = subtotal - discountAmount;
 
         await prisma.cart.create({
           data: {

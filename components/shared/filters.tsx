@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { use } from "react";
 import { Title } from "./title";
 // import { FilterCheckbox } from './filter-checkbox'; // no longer needed
 import { Input } from "../ui";
@@ -6,31 +8,90 @@ import { RangeSlider } from "./range-slider";
 import { CheckboxFiltersGroup } from "./checkbox-filters-group";
 import { cn } from "@/lib/utils";
 import { FilterCheckbox } from "./filter-checkbox";
+import { useSwitches } from "@/hooks/use-switches";
+import { useSearchParam, useSet } from "react-use";
+import { useColors } from "@/hooks/use-colors";
+import qs from "qs";  
+import { useRouter, useSearchParams } from "next/navigation";
+
 
 interface Props {
   className?: string;
 }
 
-const colorItems = [
-  { text: "Blue", value: "blue" },
-  { text: "Green", value: "green" },
-  { text: "Black", value: "black" },
-  { text: "White", value: "white" },
-  { text: "Pink", value: "pink" },
-  { text: "Orange", value: "orange" },
-];
+interface PriceRangeProps {
+  min: number;
+  max: number;
+}
 
-const switchItems = [
-  { text: "Cherry MX", value: "cherry-mx" },
-  { text: "Gateron", value: "gateron" },
-  { text: "Kailh", value: "kailh" },
-  { text: "Outemu", value: "outemu" },
-  { text: "Razer", value: "razer" },
-  { text: "Zealios", value: "zealios" },
-  { text: "Puki", value: "puki" },
+interface QueryFilters extends PriceRangeProps {
+  onSale: boolean;
+  switches: string;
+  colors: string;
+}
+
+const saleItems = [
+  {
+    text: "On sale only",
+    value: "sale",
+    endAdornment: (
+      <span className="ml-2 px-1.5 py-0.5 text-xs text-ring border border-ring rounded-sm">
+        %
+      </span>
+    ),
+  },
 ];
 
 export const Filters: React.FC<Props> = ({ className }) => {
+  const searchParams = useSearchParams() ;
+  const router = useRouter(); // IMPORTANT: useRouter from 'next/navigation'
+
+  const {
+    switches,
+    loading: switchesLoading,
+    onAddId,
+    selectedSwitches,
+  } = useSwitches();
+  const switchItems = switches.map((item) => ({
+    text: item.name,
+    value: item.id,
+  }));
+
+  const {
+    colors,
+    loading: colorsLoading,
+    onAddId: onAddColor,
+    selectedColors,
+  } = useColors();
+  const colorItems = colors.map((item) => ({
+    text: item.colorName,
+    value: item.id,
+  }));
+
+  const [onSale, setOnSale] = React.useState(false);
+  const toggleSale = () => setOnSale((prev) => !prev);
+
+  const [priceRange, setPriceRange] = React.useState<PriceRangeProps>({
+    min: 0,
+    max: 200,
+  });
+
+
+  console.log(searchParams, 999);
+  
+
+  React.useEffect(() => {
+    const filters = {
+      ...priceRange,
+      onSale,
+      switches: Array.from(selectedSwitches),
+      colors: Array.from(selectedColors),
+    };
+
+    const queryString = qs.stringify(filters, { arrayFormat: "comma" });
+    router.push(`?${queryString}`, { scroll: false }); // false not teleport scroll to top
+  }, [priceRange, onSale, selectedSwitches, selectedColors, router]);
+
   return (
     <div className={cn("min-w-[185px]", className)}>
       <Title
@@ -39,21 +100,15 @@ export const Filters: React.FC<Props> = ({ className }) => {
         className="mb-3 font-bold border-b border-b-neutral-100 pb-2"
       />
 
-      {/* Pre-Top filter - sale (checkbo) */}
-      <div className="border-b border-b-neutral-100 pb-3">
-        <FilterCheckbox
-          name="sale"
-          text="In stock only"
-          value="sale"
-          // checked={saleOnly}
-          // onCheckedChange={(checked) => setSaleOnly(Boolean(checked))}
-          endAdornment={
-            <span className="ml-2 px-1.5 py-0.5 text-xs text-ring border border-ring rounded-sm">
-              ✓
-            </span>
-          }
-        />
-      </div>
+      {/* Pre-Top filter - sale (checkbox) */}
+      <CheckboxFiltersGroup
+        title="Sale"
+        className="border-b border-b-neutral-100 pb-3"
+        defaultItems={saleItems}
+        items={saleItems}
+        onClickCheckbox={toggleSale}
+        selected={new Set(onSale ? ["sale"] : [])}
+      />
 
       {/* Top filters - color (checkbox group) */}
       <CheckboxFiltersGroup
@@ -62,6 +117,9 @@ export const Filters: React.FC<Props> = ({ className }) => {
         limit={3}
         defaultItems={colorItems}
         items={colorItems}
+        loading={colorsLoading}
+        onClickCheckbox={onAddColor}
+        selected={selectedColors}
       />
 
       {/* Middle filters - price range */}
@@ -73,17 +131,29 @@ export const Filters: React.FC<Props> = ({ className }) => {
             placeholder="0"
             min={0}
             max={200}
-            defaultValue={0}
+            value={String(priceRange.min)}
+            onChange={(e) =>
+              setPriceRange({ ...priceRange, min: Number(e.target.value) })
+            }
           />
           <Input
             type="number"
             placeholder="200"
             min={10}
             max={200}
-            defaultValue={200}
+            value={String(priceRange.max)}
+            onChange={(e) =>
+              setPriceRange({ ...priceRange, max: Number(e.target.value) })
+            }
           />
         </div>
-        <RangeSlider min={0} max={200} step={5} value={[0, 200]} />
+        <RangeSlider
+          min={0}
+          max={200}
+          step={5}
+          value={[priceRange.min, priceRange.max]}
+          onValueChange={([from, to]) => setPriceRange({ min: from, max: to })}
+        />
       </div>
 
       {/* Bottom filters - switches (checkbox group) */}
@@ -93,6 +163,9 @@ export const Filters: React.FC<Props> = ({ className }) => {
         limit={3}
         defaultItems={switchItems}
         items={switchItems}
+        loading={switchesLoading}
+        onClickCheckbox={onAddId}
+        selected={selectedSwitches}
       />
     </div>
   );

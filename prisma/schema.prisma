@@ -37,14 +37,15 @@ model Layout {
 }
 
 model Keyboard {
-    id          String   @id @default(cuid())
-    name        String
-    basePrice   Decimal  @db.Decimal(10, 2)
-    layoutId    String
-    layout      Layout   @relation(fields: [layoutId], references: [id]) // many to one
-    description String?  @db.Text
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    id                 String   @id @default(cuid())
+    name               String
+    basePrice          Decimal  @db.Decimal(10, 2)
+    discountPercentage Int      @default(0) // (0-100)
+    layoutId           String
+    layout             Layout   @relation(fields: [layoutId], references: [id]) // many to one
+    description        String?  @db.Text
+    createdAt          DateTime @default(now())
+    updatedAt          DateTime @updatedAt
 
     // Relations
     switches      Switch[] // Implicit many-to-many

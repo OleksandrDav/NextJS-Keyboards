@@ -1,7 +1,12 @@
 import { prisma } from "@/prisma/prisma-client";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export async function GET() {
-  const switches = await prisma.switch.findMany();
-  return NextResponse.json({ switches });
+  const switches = await prisma.switch.findMany({
+    where: {
+      inStock: true,
+    },
+  });
+
+  return NextResponse.json(switches);
 }
