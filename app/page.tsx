@@ -1,160 +1,60 @@
 import { Container, Filters, Title, TopBar } from "@/components/shared";
-import { ProductCard } from "@/components/shared/product-card";
 import { ProductGroupList } from "@/components/shared/products-group-list";
+import { prisma } from "@/prisma/prisma-client";
 
+export default async function Home() {
+  const layouts = await prisma.layout.findMany({
+    where: {
+      keyboards: {
+        some: {}, // Only get layouts with keyboards
+      },
+    },
+    include: {
+      keyboards: {
+        include: {
+          switches: true,
+          colorVariants: true,
+        },
+      },
+    },
+  });
 
-export default function Home() {
-  return <>
-    <Container className="mt-5">
-      <Title text='All Keyboards' size='lg' className="font-extrabold" />
-    </Container>
+  const topBarLayouts = layouts
+    .map((l) => ({ id: l.id, name: l.name }));
 
-    <TopBar />
+  return (
+    <>
+      <Container className="mt-5">
+        <Title text="All Keyboards" size="lg" className="font-extrabold" />
+      </Container>
 
-    <Container className="mt-9 pb-14">
-      <div className="flex gap-[60px]">
+      <TopBar layouts={topBarLayouts} />
 
-        {/* Filters */}
-        <div>
-          <Filters />
-        </div>
+      <Container className="mt-9 pb-14">
+        <div className="flex gap-[60px]">
+          {/* Filters */}
+          <div>
+            <Filters />
+          </div>
 
-        {/* Keyboards */}
-        <div className="flex-1">
-          <div className="flex flex-col gap-16">
-
-            <ProductGroupList title="80% Layout" items={[
-              {
-                id: 1,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 2,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 3,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 4,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 5,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-            ]} categoryId={2} />
-            <ProductGroupList title="75% Layout" items={[
-              {
-                id: 6,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 7,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 8,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 9,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 10,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-            ]} categoryId={3} />
-            <ProductGroupList title="65% Layout" items={[
-              {
-                id: 11,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 12,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 13,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 14,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-              {
-                id: 15,
-                name: "Mchoose g87",
-                price: 66,
-                items: [{ price: 66 }],
-                imageUrl: "https://www.mchose.store/cdn/shop/files/K87SBlackPink.jpg?v=1759915238&width=1000",
-                colors: ["black", "white", "pink", "blue"]
-              },
-            ]} categoryId={4} />
-
+          {/* Keyboards */}
+          <div className="flex-1">
+            <div className="flex flex-col gap-16">
+              {layouts.map(
+                (layout) =>
+                  layout.keyboards.length > 0 && (
+                    <ProductGroupList
+                      key={layout.id}
+                      title={layout.name}
+                      layoutId={layout.id}
+                      items={layout.keyboards}
+                    />
+                  )
+              )}
+            </div>
           </div>
         </div>
-
-
-      </div>
-    </Container>
-  </>;
+      </Container>
+    </>
+  );
 }

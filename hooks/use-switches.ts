@@ -10,8 +10,6 @@ export const useSwitches = () => {
   const [switches, setSwitches] = useState<Switch[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [selectedSwitches, {toggle}] = useSet(new Set<string>());
-
   useEffect(() => {
     async function fetchSwitches() {
       try {
@@ -31,6 +29,5 @@ export const useSwitches = () => {
   return {
     switches,
     loading,
-    onAddId: toggle, selectedSwitches,
   };
 };

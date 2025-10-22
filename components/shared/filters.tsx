@@ -3,31 +3,14 @@
 import React, { use } from "react";
 import { Title } from "./title";
 // import { FilterCheckbox } from './filter-checkbox'; // no longer needed
-import { Input } from "../ui";
-import { RangeSlider } from "./range-slider";
-import { CheckboxFiltersGroup } from "./checkbox-filters-group";
 import { cn } from "@/lib/utils";
-import { FilterCheckbox } from "./filter-checkbox";
-import { useSwitches } from "@/hooks/use-switches";
-import { useSearchParam, useSet } from "react-use";
-import { useColors } from "@/hooks/use-colors";
-import qs from "qs";  
-import { useRouter, useSearchParams } from "next/navigation";
-
+import { Input } from "../ui";
+import { CheckboxFiltersGroup } from "./checkbox-filters-group";
+import { RangeSlider } from "./range-slider";
+import { useQueryFilters, useFilters, useSwitches, useColors } from "@/hooks";
 
 interface Props {
   className?: string;
-}
-
-interface PriceRangeProps {
-  min: number;
-  max: number;
-}
-
-interface QueryFilters extends PriceRangeProps {
-  onSale: boolean;
-  switches: string;
-  colors: string;
 }
 
 const saleItems = [
@@ -43,54 +26,26 @@ const saleItems = [
 ];
 
 export const Filters: React.FC<Props> = ({ className }) => {
-  const searchParams = useSearchParams() ;
-  const router = useRouter(); // IMPORTANT: useRouter from 'next/navigation'
+  const { switches, loading: switchesLoading } = useSwitches();
+  const { colors, loading: colorsLoading } = useColors();
+  const filters = useFilters();
 
-  const {
-    switches,
-    loading: switchesLoading,
-    onAddId,
-    selectedSwitches,
-  } = useSwitches();
+  useQueryFilters(filters);
+
   const switchItems = switches.map((item) => ({
     text: item.name,
     value: item.id,
   }));
 
-  const {
-    colors,
-    loading: colorsLoading,
-    onAddId: onAddColor,
-    selectedColors,
-  } = useColors();
   const colorItems = colors.map((item) => ({
     text: item.colorName,
     value: item.id,
   }));
 
-  const [onSale, setOnSale] = React.useState(false);
-  const toggleSale = () => setOnSale((prev) => !prev);
-
-  const [priceRange, setPriceRange] = React.useState<PriceRangeProps>({
-    min: 0,
-    max: 200,
-  });
-
-
-  console.log(searchParams, 999);
-  
-
-  React.useEffect(() => {
-    const filters = {
-      ...priceRange,
-      onSale,
-      switches: Array.from(selectedSwitches),
-      colors: Array.from(selectedColors),
-    };
-
-    const queryString = qs.stringify(filters, { arrayFormat: "comma" });
-    router.push(`?${queryString}`, { scroll: false }); // false not teleport scroll to top
-  }, [priceRange, onSale, selectedSwitches, selectedColors, router]);
+  const updatePrices = (prices: number[]) => {
+    filters.setPrices("min", prices[0]);
+    filters.setPrices("max", prices[1]);
+  };
 
   return (
     <div className={cn("min-w-[185px]", className)}>
@@ -106,8 +61,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
         className="border-b border-b-neutral-100 pb-3"
         defaultItems={saleItems}
         items={saleItems}
-        onClickCheckbox={toggleSale}
-        selected={new Set(onSale ? ["sale"] : [])}
+        onClickCheckbox={filters.setOnSale}
+        selected={new Set(filters.onSale ? ["sale"] : [])}
       />
 
       {/* Top filters - color (checkbox group) */}
@@ -118,8 +73,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
         defaultItems={colorItems}
         items={colorItems}
         loading={colorsLoading}
-        onClickCheckbox={onAddColor}
-        selected={selectedColors}
+        onClickCheckbox={filters.setSelectedColors}
+        selected={filters.selectedColors}
       />
 
       {/* Middle filters - price range */}
@@ -131,28 +86,24 @@ export const Filters: React.FC<Props> = ({ className }) => {
             placeholder="0"
             min={0}
             max={200}
-            value={String(priceRange.min)}
-            onChange={(e) =>
-              setPriceRange({ ...priceRange, min: Number(e.target.value) })
-            }
+            value={String(filters.priceRange.min)}
+            onChange={(e) => filters.setPrices("min", Number(e.target.value))}
           />
           <Input
             type="number"
             placeholder="200"
             min={10}
             max={200}
-            value={String(priceRange.max)}
-            onChange={(e) =>
-              setPriceRange({ ...priceRange, max: Number(e.target.value) })
-            }
+            value={String(filters.priceRange.max)}
+            onChange={(e) => filters.setPrices("max", Number(e.target.value))}
           />
         </div>
         <RangeSlider
           min={0}
           max={200}
           step={5}
-          value={[priceRange.min, priceRange.max]}
-          onValueChange={([from, to]) => setPriceRange({ min: from, max: to })}
+          value={[filters.priceRange.min || 0, filters.priceRange.max || 200]}
+          onValueChange={updatePrices}
         />
       </div>
 
@@ -164,8 +115,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
         defaultItems={switchItems}
         items={switchItems}
         loading={switchesLoading}
-        onClickCheckbox={onAddId}
-        selected={selectedSwitches}
+        onClickCheckbox={filters.setSelectedSwitches}
+        selected={filters.selectedSwitches}
       />
     </div>
   );

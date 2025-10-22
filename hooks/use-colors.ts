@@ -11,8 +11,6 @@ export const useColors = () => {
   const [colors, setColors] = useState<Color[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [selectedColors, {toggle}] = useSet(new Set<string>());
-
   useEffect(() => {
     async function fetchColors() {
       try {
@@ -32,6 +30,5 @@ export const useColors = () => {
   return {
     colors,
     loading,
-    onAddId: toggle, selectedColors,
   };
 };

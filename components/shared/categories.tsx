@@ -2,26 +2,23 @@
 
 import { cn, createSlug } from '@/lib/utils';
 import { useCategoryStore } from '@/store/category';
+import { Layout } from '@prisma/client';
 import React from 'react';
 
+type TopBarLayout = { id: string; name: string };
+
 interface Props {
-    className?: string
+  layouts: TopBarLayout[];
+  className?: string;
 }
 
-const cats = [
-    { id: 1, name: '98% Layout' },
-    { id: 2, name: '80% Layout' },
-    { id: 3, name: '75% Layout' },
-    { id: 4, name: '65% Layout' },
-    { id: 5, name: '60% Layout' }
-];
-
-export const Categories: React.FC<Props> = ({ className }) => {
+export const Categories: React.FC<Props> = ({ className, layouts }) => {
     const categoryActiveId = useCategoryStore((state) => state.activeId);
     return (
         <div className={cn('inline-flex gap-1 bg-gray-50 p-1 rounded-2xl', className)}>
-            {cats.map(({name, id}) => {
+            {layouts.map(({name, id}) => {
                 const slug = createSlug(name);
+                
                 return (
                     <a 
                         className={cn(

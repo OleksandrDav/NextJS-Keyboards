@@ -1,12 +1,13 @@
 import { create } from "zustand";
 
 interface State {
-    activeId: number;
-    setActiveId: (activeId: number) => void;
+    activeId: string | null;
+    setActiveId: (activeId: string) => void;
 }
 
 
 export const useCategoryStore = create<State>((set) => ({
-    activeId: 0,
-    setActiveId: (activeId) => set({ activeId }),
+    activeId: null, // Initial value is now null
+    setActiveId: (activeId) => set({ activeId }), // Accepts a string
 }));
+

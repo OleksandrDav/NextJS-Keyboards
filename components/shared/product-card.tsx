@@ -17,8 +17,7 @@ interface Props {
   id: number;
   name: string;
   price: number;
-  imageUrl: string;
-  colors: string[];
+  imageUrl?: string;
   className?: string;
 }
 
@@ -27,22 +26,26 @@ export const ProductCard: React.FC<Props> = ({
   name,
   price,
   imageUrl,
-  colors,
   className,
 }) => {
   return (
     <div className={className}>
       <Link href={`/product/${id}`}>
-        <div className="flex justify-center items-center h-[260px]">
-          <img
-            className="w-full h-auto max-w-[260px] max-h-[260px] object-contain"
-            src={imageUrl}
-            alt={name}
-          />
-        </div>
-
-        <Title text={name} size="sm" className="mb-1 mt-3 front-bold" />
-        <div className="flex items-center gap-2 mt-2">
+        <div className="flex flex-col h-full">
+          <div className="flex justify-center items-center h-[260px]">
+            <img
+              className="w-full h-auto max-w-[260px] max-h-[260px] object-contain"
+              src={
+                imageUrl ||
+                "https://www.mchose.store/cdn/shop/files/mchose-official-mountains-gradient-mist-blue-switch-mchose-gx87s-aluminum-custom-mechanical-keyboard-1166639623.png?v=1754474595&width=1000"
+              }
+              alt={name}
+            />
+          </div>
+          
+          <Title text={name} size="sm" className="mb-1 mt-3 font-bold min-h-[3rem]" />
+          
+          {/* <div className="flex items-center gap-2 mt-2">
           {colors.map((c) => (
             <button
               key={c}
@@ -55,19 +58,17 @@ export const ProductCard: React.FC<Props> = ({
               }}
             />
           ))}
-        </div>
+        </div> */}
 
-        <div className="flex justify-between items-center mt-4 ">
-          <span className="text-[20px] whitespace-nowrap">
-            from <b>{price} $</b>
-          </span>
-          <Button
-            variant="secondary"
-            className="text-base font-bold flex-shrink-0"
-          >
-            <Plus size={20} className="mr-1" />
-            Add to Cart
-          </Button>
+          <div className="flex justify-between items-center mt-auto pt-4">
+            <span className="text-[20px] whitespace-nowrap">
+              from <b>{price} $</b>
+            </span>
+            <Button variant="secondary" className="text-base font-bold flex-shrink-0">
+              <Plus size={20} className="mr-1" />
+              Add to Cart
+            </Button>
+          </div>
         </div>
       </Link>
     </div>
