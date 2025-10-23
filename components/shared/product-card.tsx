@@ -30,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   return (
     <div className={className}>
-      <Link href={`/product/${id}`}>
+      <Link href={`/keyboard/${id}`}>
         <div className="flex flex-col h-full">
           <div className="flex justify-center items-center h-[260px]">
             <img
@@ -44,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({
           </div>
           
           <Title text={name} size="sm" className="mb-1 mt-3 font-bold min-h-[3rem]" />
-          
+
           {/* <div className="flex items-center gap-2 mt-2">
           {colors.map((c) => (
             <button
