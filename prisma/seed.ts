@@ -72,6 +72,12 @@ async function up() {
             isDefault: variant.isDefault || false,
             sortOrder: index,
             inStock: variant.inStock,
+            additionalImages: {
+              create:
+                "additionalImages" in variant
+                  ? variant.additionalImages || []
+                  : [],
+            },
           })),
         },
       },

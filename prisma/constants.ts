@@ -41,9 +41,30 @@ export const keyboards = [
     description: "Wireless 98% keyboard with premium gasket mount design for superior typing feel and acoustics.",
     switches: ["Icy Creamsicle", "Mist Blue", "Hyacinth"],
     colorVariants: [
-      { colorName: "White", colorHex: "#FFFFFF", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-retro-white-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639466.jpg?v=1754474559&width=1000", isDefault: true, inStock: true },
+      { 
+        colorName: "White", 
+        colorHex: "#FFFFFF", 
+        imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-retro-white-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639466.jpg?v=1754474559&width=1000", 
+        isDefault: true, 
+        inStock: true,
+        additionalImages: [
+          { imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-pink-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639452.jpg?v=1754474558&width=1000", altText: "MCHOSE K99 V2 White - Angle View", sortOrder: 1 },
+          { imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-pink-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639452.jpg?v=1754474558&width=1000", altText: "MCHOSE K99 V2 White - Top View", sortOrder: 2 },
+          { imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-pink-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639452.jpg?v=1754474558&width=1000", altText: "MCHOSE K99 V2 White - Side Profile", sortOrder: 3 }
+        ]
+      },
       { colorName: "Blue", colorHex: "#87CEEB", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-sky-blue-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639456.jpg?v=1754474550&width=1000", inStock: true },
-      { colorName: "Orange", colorHex: "#FF7F50", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-horizon-orange-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639457.jpg?v=1754474552&width=1000", inStock: false },
+      { 
+        colorName: "Orange", 
+        colorHex: "#FF7F50", 
+        imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-horizon-orange-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639457.jpg?v=1754474552&width=1000", 
+        inStock: false,
+        additionalImages: [
+          { imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-pink-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639452.jpg?v=1754474558&width=1000", altText: "MCHOSE K99 V2 Orange - Angle View", sortOrder: 1 },
+          { imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-pink-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639452.jpg?v=1754474558&width=1000", altText: "MCHOSE K99 V2 Orange - Close-up Detail", sortOrder: 2 },
+          { imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-pink-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639452.jpg?v=1754474558&width=1000", altText: "MCHOSE K99 V2 Orange - Keys Detail", sortOrder: 3 }
+        ]
+      },
       { colorName: "Black", colorHex: "#2C3E50", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-mountains-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639454.jpg?v=1754474555&width=1000", inStock: true },
       { colorName: "Pink", colorHex: "#FFB6C1", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-pink-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639452.jpg?v=1754474558&width=1000", inStock: true }
     ]

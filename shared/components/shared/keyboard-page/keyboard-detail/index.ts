@@ -1,0 +1,9 @@
+export { ImageGallery } from '@/shared/components/shared/keyboard-page/keyboard-detail/image-gallery';
+export { ProductHeader } from '@/shared/components/shared/keyboard-page/keyboard-detail/product-header';
+export { PriceDisplay } from '@/shared/components/shared/keyboard-page/keyboard-detail/price-display';
+export { ProductDescription } from '@/shared/components/shared/keyboard-page/keyboard-detail/product-description';
+export { ColorSelector } from '@/shared/components/shared/keyboard-page/keyboard-detail/color-selector';
+export { SwitchSelector } from '@/shared/components/shared/keyboard-page/keyboard-detail/switch-selector';
+export { AddToCartButton } from '@/shared/components/shared/keyboard-page/keyboard-detail/add-to-cart-button';
+export { FeaturesSection } from '@/shared/components/shared/keyboard-page/keyboard-detail/features-section';
+export { SpecificationSection } from '@/shared/components/shared/keyboard-page/keyboard-detail/specification-section';
