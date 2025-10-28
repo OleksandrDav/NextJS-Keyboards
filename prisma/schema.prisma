@@ -137,15 +137,13 @@ model CartItem {
     switch   Switch @relation(fields: [switchId], references: [id])
     switchId String
 
-    quantity Int     @default(1)
-    price    Decimal @db.Decimal(10, 2) // Snapshot of price at time of adding to cart
+    quantity Int @default(1)
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    @@unique([cartId, keyboardId, colorVariantId, switchId]) // Prevent duplicate items
-    @@index([cartId])
-    @@index([keyboardId])
+    @@unique([cartId, keyboardId, colorVariantId, switchId])
+    @@index([cartId]) // For fetching all items in a cart
 }
 
 model Order {

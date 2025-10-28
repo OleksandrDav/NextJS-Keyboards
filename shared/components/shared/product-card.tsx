@@ -3,6 +3,7 @@ import React from "react";
 import { Title } from "./title";
 import { Button } from "../ui";
 import { Plus } from "lucide-react";
+import { cn } from "@/shared/lib/utils";
 
 const COLOR_MAP: Record<string, string> = {
   blue: "#3B82F6",
@@ -29,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({
   className,
 }) => {
   return (
-    <div className={className}>
+    <div className={cn("min-w-[290px]", className)}>
       <Link href={`/keyboard/${id}`}>
         <div className="flex flex-col h-full">
           <div className="flex justify-center items-center h-[260px]">

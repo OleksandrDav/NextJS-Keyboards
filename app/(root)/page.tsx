@@ -2,6 +2,7 @@ import { Container, Filters, Title, TopBar } from "@/shared/components/shared";
 import { ProductGroupList } from "@/shared/components/shared/products-group-list";
 import { prisma } from "@/prisma/prisma-client";
 import { serializePrismaData } from "@/shared/lib/serialize";
+import { Suspense } from "react";
 
 export default async function Home() {
   const layouts = await prisma.layout.findMany({
@@ -37,7 +38,9 @@ export default async function Home() {
         <div className="flex gap-[60px]">
           {/* Filters */}
           <div>
-            <Filters />
+            <Suspense fallback={<div>Loading filters...</div>}>
+              <Filters />
+            </Suspense>
           </div>
 
           {/* Keyboards */}

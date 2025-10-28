@@ -58,7 +58,7 @@ async function up() {
       data: {
         name: keyboard.name,
         basePrice: keyboard.basePrice,
-        discountPercentage: keyboard.discountPercentage, // Added discount field
+        discountPercentage: keyboard.discountPercentage,
         description: keyboard.description,
         layoutId: layout.id,
         switches: {
@@ -104,18 +104,18 @@ async function up() {
       const switchOption = keyboard.switches.find((s) => s.inStock);
 
       if (colorVariant && switchOption) {
-        // Calculate price with discount
+        // Calculate total amount for the cart (for display purposes)
         const basePrice = Number(keyboard.basePrice);
         const switchPrice = Number(switchOption.priceModifier);
         const subtotal = basePrice + switchPrice;
         const discountAmount = (subtotal * keyboard.discountPercentage) / 100;
-        const cartPrice = subtotal - discountAmount;
+        const itemPrice = subtotal - discountAmount;
 
         await prisma.cart.create({
           data: {
             userId: bob.id,
             token: `token_${bob.id}_${Date.now()}`,
-            totalAmount: cartPrice * 2, // 2 items
+            totalAmount: itemPrice * 2, // 2 items
             cartItems: {
               create: [
                 {
@@ -123,7 +123,6 @@ async function up() {
                   colorVariantId: colorVariant.id,
                   switchId: switchOption.id,
                   quantity: 2,
-                  price: cartPrice,
                 },
               ],
             },
@@ -140,17 +139,17 @@ async function up() {
       const switchOption = keyboard.switches.find((s) => s.inStock);
 
       if (colorVariant && switchOption) {
-        // Calculate price with discount
+        // Calculate total amount for the cart
         const basePrice = Number(keyboard.basePrice);
         const switchPrice = Number(switchOption.priceModifier);
         const subtotal = basePrice + switchPrice;
         const discountAmount = (subtotal * keyboard.discountPercentage) / 100;
-        const cartPrice = subtotal - discountAmount;
+        const itemPrice = subtotal - discountAmount;
 
         await prisma.cart.create({
           data: {
             token: `guest_token_${Date.now()}`,
-            totalAmount: cartPrice,
+            totalAmount: itemPrice,
             cartItems: {
               create: [
                 {
@@ -158,7 +157,6 @@ async function up() {
                   colorVariantId: colorVariant.id,
                   switchId: switchOption.id,
                   quantity: 1,
-                  price: cartPrice,
                 },
               ],
             },

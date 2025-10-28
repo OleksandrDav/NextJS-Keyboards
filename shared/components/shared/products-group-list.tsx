@@ -16,21 +16,12 @@ interface Props {
   className?: string;
 }
 
-export const ProductGroupList: React.FC<Props> = ({
-  title,
-  items,
-  listClassName,
-  layoutId,
-  className,
-}) => {
+export const ProductGroupList: React.FC<Props> = ({ title, items, listClassName, layoutId, className }) => {
   const setActiveLayoutId = useCategoryStore((state) => state.setActiveId);
   const intersectionRef = useRef(null);
-  const intersection = useIntersection(
-    intersectionRef as unknown as React.RefObject<HTMLElement>,
-    {
-      threshold: 0.6,
-    }
-  );
+  const intersection = useIntersection(intersectionRef as unknown as React.RefObject<HTMLElement>, {
+    threshold: 0.6,
+  });
 
   React.useEffect(() => {
     if (intersection?.isIntersecting) {
@@ -46,12 +37,7 @@ export const ProductGroupList: React.FC<Props> = ({
     <div className={className} id={slug} ref={intersectionRef}>
       <Title text={title} size="lg" className="font-extrabold mb-5" />
 
-      <div
-        className={cn(
-          "grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3",
-          listClassName
-        )}
-      >
+      <div className={cn("grid gap-10 grid-cols-[repeat(auto-fit,minmax(290px,1fr))]", listClassName)}>
         {items.map((product, index) => (
           <ProductCard
             key={product.id}

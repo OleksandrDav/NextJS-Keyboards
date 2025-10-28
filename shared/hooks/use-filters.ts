@@ -27,6 +27,7 @@ interface ReturnProps extends Filters {
   setPrices: (name: keyof PriceRangeProps, value: number) => void;
 }
 
+// Need to use Suspense to avoid hydration issues!!!
 export const useFilters = (): ReturnProps => {
   const searchParams = useSearchParams() as unknown as Map<
     keyof QueryFilters,

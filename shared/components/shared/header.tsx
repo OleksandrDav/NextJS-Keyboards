@@ -1,11 +1,12 @@
 import { cn } from "@/shared/lib/utils";
-import React from "react";
-import { Container } from "./container";
+import { User } from "lucide-react";
 import Image from "next/image";
-import { Button } from "../ui";
-import { ArrowRight, Search, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
+import React from "react";
+import { Button } from "../ui";
+import { Container } from "./container";
 import { SearchInput } from "./search-input";
+import { CartButton } from "./cart-button";
 
 interface Props {
   className?: string;
@@ -55,22 +56,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 
           {/* Cart Block - Only icon on mobile */}
           <div>
-            <Button className="group relative p-2 md:p-2.5">
-              <b className="hidden md:inline">65 $</b>
-              <span className="h-full w-[1px] bg-white/30 mx-2 hidden md:inline" />
-              <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
-                <ShoppingCart
-                  size={16}
-                  className="relative mb-0.5"
-                  strokeWidth={2}
-                />
-                <b className="md:inline">3</b>
-              </div>
-              <ArrowRight
-                size={20}
-                className="absolute right-4 transition duration-300 -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 hidden md:block"
-              />
-            </Button>
+            <CartButton />
           </div>
         </div>
       </Container>
