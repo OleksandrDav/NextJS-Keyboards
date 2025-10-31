@@ -12,20 +12,20 @@ import {
   SwitchSelector,
 } from "./keyboard-detail";
 import { useCartStore } from "@/shared/store/cart";
-import { useState } from "react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 
 interface KeyboardDetailContentProps {
   keyboard: KeyboardWithRelations;
   showThumbnails?: boolean;
   className?: string;
+  onAddToCartSuccess?: () => void;
 }
 
 export const KeyboardDetailContent: React.FC<KeyboardDetailContentProps> = ({
   keyboard,
   showThumbnails = true,
   className = "grid grid-cols-1 lg:grid-cols-2 gap-12",
+  onAddToCartSuccess, 
 }) => {
   const {
     selectedColorVariant,
@@ -41,8 +41,6 @@ export const KeyboardDetailContent: React.FC<KeyboardDetailContentProps> = ({
   const addCartItem = useCartStore((state) => state.addCartItem);
   const loading = useCartStore((state) => state.loading);
 
-  const router = useRouter();
-
   const onAddKeyboard = async () => {
     if (!selectedSwitch) {
       toast.error("Please select a switch type");
@@ -56,7 +54,8 @@ export const KeyboardDetailContent: React.FC<KeyboardDetailContentProps> = ({
         colorVariantId: selectedColorVariant.id,
       });
       toast.success("Added to cart successfully!");
-      router.back()
+
+      onAddToCartSuccess?.();
     } catch (error) {
       console.error("Failed to add to cart:", error);
       toast.error("Failed to add to cart. Please try again.");

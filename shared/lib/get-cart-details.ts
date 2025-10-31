@@ -5,6 +5,7 @@ export interface CartStateItem {
   id: number;
   quantity: number;
   price: string;
+  disabled?: boolean;
   keyboard: {name: string;};
   colorVariant: {colorName: string; imageUrl: string;};
   switch: {name: string; type: string;};
@@ -20,6 +21,7 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
         id: item.id,
         quantity: item.quantity,
         price: calcCartItemPrice(item).toFixed(2),
+        disabled: false,
         keyboard: {
             name: item.keyboard.name,
         },
