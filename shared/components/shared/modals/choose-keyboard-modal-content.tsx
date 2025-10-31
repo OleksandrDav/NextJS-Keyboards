@@ -1,5 +1,3 @@
-"use client";
-
 import { KeyboardWithRelations } from "@/@types/keyboard";
 import { KeyboardDetailContent } from "../keyboard-page/keyboard-detail-content";
 

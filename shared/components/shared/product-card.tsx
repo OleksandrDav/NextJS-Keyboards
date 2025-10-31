@@ -4,47 +4,47 @@ import { Title } from "./title";
 import { Button } from "../ui";
 import { Plus } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
+import { ColorSelector } from "./color-selector";
 
-const COLOR_MAP: Record<string, string> = {
-  blue: "#3B82F6",
-  green: "#22C55E",
-  black: "#000000",
-  white: "#E5E7EB",
-  pink: "#EC4899",
-  orange: "#F97316",
-};
+interface ColorVariant {
+  id: string;
+  colorName: string;
+  colorHex: string;
+  imageUrl: string;
+}
 
 interface Props {
-  id: number;
+  id: string;
   name: string;
-  price: number;
+  price: string;
   imageUrl?: string;
+  discountPercentage: number;
+  colorVariants: ColorVariant[];
   className?: string;
 }
 
-export const ProductCard: React.FC<Props> = ({
-  id,
-  name,
-  price,
-  imageUrl,
-  className,
+export const ProductCard: React.FC<Props> = ({ 
+  id, 
+  name, 
+  price, 
+  imageUrl, 
+  discountPercentage,
+  colorVariants,
+  className 
 }) => {
+  const defaultImage = imageUrl || colorVariants[0]?.imageUrl || "https://www.mchose.store/cdn/shop/files/mchose-official-mountains-gradient-mist-blue-switch-mchose-gx87s-aluminum-custom-mechanical-keyboard-1166639623.png?v=1754474595&width=1000";
+
   return (
-    <div className={cn("min-w-[290px]", className)}>
+    <div className={cn("min-w-[290px] max-w-[320px]", className)}>
       <Link href={`/keyboard/${id}`}>
         <div className="flex flex-col h-full">
-          <div className="flex justify-center items-center h-[260px]">
-            <img
-              className="w-full h-auto max-w-[260px] max-h-[260px] object-contain"
-              src={
-                imageUrl ||
-                "https://www.mchose.store/cdn/shop/files/mchose-official-mountains-gradient-mist-blue-switch-mchose-gx87s-aluminum-custom-mechanical-keyboard-1166639623.png?v=1754474595&width=1000"
-              }
-              alt={name}
-            />
-          </div>
-          
-          <Title text={name} size="sm" className="mb-1 mt-3 font-bold min-h-[3rem]" />
+          <ColorSelector
+            colorVariants={colorVariants}
+            defaultImageUrl={defaultImage}
+            discountPercentage={discountPercentage}
+          />
+
+          <Title text={name} size="sm" className="mb-1 mt-3 font-bold min-h-[3rem] flex-1" />
 
           <div className="flex justify-between items-center mt-auto pt-4">
             <span className="text-[20px] whitespace-nowrap">

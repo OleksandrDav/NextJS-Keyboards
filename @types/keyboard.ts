@@ -26,6 +26,13 @@ export type KeyboardWithRelations = Prisma.KeyboardGetPayload<{
   };
 }>;
 
+export type KeyboardDetails = Prisma.KeyboardGetPayload<{
+  include: {
+    switches: true;
+    colorVariants: true
+  };
+}>;
+
 // Image structure used in the UI
 export type KeyboardImage = {
   id: string;

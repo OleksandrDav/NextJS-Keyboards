@@ -6,6 +6,11 @@ export async function GET() {
     where: {
       inStock: true,
     },
+    orderBy: {
+      keyboards: {
+        _count: 'desc',
+      },
+    },
   });
 
   return NextResponse.json(switches);

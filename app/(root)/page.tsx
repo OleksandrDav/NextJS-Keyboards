@@ -3,23 +3,10 @@ import { ProductGroupList } from "@/shared/components/shared/products-group-list
 import { prisma } from "@/prisma/prisma-client";
 import { serializePrismaData } from "@/shared/lib/serialize";
 import { Suspense } from "react";
+import { findKeyboards, GetSearchParams } from "@/shared/lib/find-keyboards";
 
-export default async function Home() {
-  const layouts = await prisma.layout.findMany({
-    where: {
-      keyboards: {
-        some: {}, // Only get layouts with keyboards
-      },
-    },
-    include: {
-      keyboards: {
-        include: {
-          switches: true,
-          colorVariants: true,
-        },
-      },
-    },
-  });
+export default async function Home({ searchParams }: { searchParams: GetSearchParams }) {
+  const layouts = await findKeyboards(searchParams);
 
   const topBarLayouts = layouts.map((l) => ({ id: l.id, name: l.name }));
 

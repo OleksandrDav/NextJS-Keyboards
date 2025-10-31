@@ -66,7 +66,7 @@ export const keyboards = [
         ]
       },
       { colorName: "Black", colorHex: "#2C3E50", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-mountains-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639454.jpg?v=1754474555&width=1000", inStock: true },
-      { colorName: "Pink", colorHex: "#FFB6C1", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-pink-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639452.jpg?v=1754474558&width=1000", inStock: true }
+      { colorName: "Pink", colorHex: "#FF69B4", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-pink-gradient-icy-creamsicle-switch-mchose-k99-v2-wireless-gasket-mount-mechanical-keyboard-1166639452.jpg?v=1754474558&width=1000", inStock: true }
     ]
   },
   {
@@ -92,7 +92,7 @@ export const keyboards = [
     switches: ["Icy Creamsicle", "Mist Blue", "Ice Blue"],
     colorVariants: [
       { colorName: "Black", colorHex: "#2C3E50", imageUrl: "https://www.mchose.store/cdn/shop/files/K87SMountainsGradient.jpg?v=1759915238&width=1000", isDefault: true, inStock: true },
-      { colorName: "Pink", colorHex: "#FFE5B4", imageUrl: "https://www.mchose.store/cdn/shop/files/K87SPeachGradient.jpg?v=1759915238&width=1000", inStock: true }
+      { colorName: "Pink", colorHex: "#FF69B4", imageUrl: "https://www.mchose.store/cdn/shop/files/K87SPeachGradient.jpg?v=1759915238&width=1000", inStock: true }
     ]
   },
   {
@@ -130,7 +130,7 @@ export const keyboards = [
     colorVariants: [
       { colorName: "Black", colorHex: "#000000", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboards-black-topographic-ice-blue-switch-mchose-g87-wireless-gasket-mount-custom-mechanical-keyboard-1166639679.jpg?v=1754474364&width=1000", isDefault: true, inStock: true },
       { colorName: "White", colorHex: "#FFFFFF", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboards-mchose-g87-wireless-gasket-mount-custom-mechanical-keyboard-1166639680.jpg?v=1754474362&width=1000", inStock: true },
-      { colorName: "Pink", colorHex: "#FFC0CB", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboards-mchose-g87-wireless-gasket-mount-custom-mechanical-keyboard-1166639426.jpg?v=1754474366&width=1000", inStock: true },
+      { colorName: "Pink", colorHex: "#FF69B4", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboards-mchose-g87-wireless-gasket-mount-custom-mechanical-keyboard-1166639426.jpg?v=1754474366&width=1000", inStock: true },
       { colorName: "Blue", colorHex: "#4169E1", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboards-mchose-g87-wireless-gasket-mount-custom-mechanical-keyboard-1166639429.jpg?v=1754474372&width=1000", inStock: true }
     ]
   },
@@ -146,7 +146,7 @@ export const keyboards = [
       { colorName: "Green", colorHex: "#90EE90", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-green-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639824.jpg?v=1754474106&width=1000", isDefault: true, inStock: true },
       { colorName: "Blue", colorHex: "#4169E1", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-arctic-snow-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639833.jpg?v=1754474090&width=1000", inStock: true },
       { colorName: "Black", colorHex: "#000000", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-black-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639837.jpg?v=1754474083&width=1000", inStock: true },
-      { colorName: "Pink", colorHex: "#FFE4E1", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-white-pink-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639836.jpg?v=1754474084&width=1000", inStock: true },
+      { colorName: "Pink", colorHex: "#FF69B4", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-white-pink-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639836.jpg?v=1754474084&width=1000", inStock: true },
       { colorName: "Gray", colorHex: "#808080", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-grey-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639822.jpg?v=1754474109&width=1000", inStock: true },
       { colorName: "White", colorHex: "#FFFFFF", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-white-topographic-matcha-latte-switch-mchose-g75-pro-tri-mode-gasket-structure-gaming-mechanical-keyboard-1166639575.jpg?v=1756089904&width=1000", inStock: true }
     ]
@@ -173,7 +173,7 @@ export const keyboards = [
     switches: ["Hyacinth", "Icy Creamsicle", "Matcha Latte"],
     colorVariants: [
       { colorName: "Green", colorHex: "#90EE90", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-green-hyacinth-switch-mchose-x75-v2-custom-mechanical-keyboard-for-office-gaming-1166639786.jpg?v=1754474182&width=1000", isDefault: true, inStock: true },
-      { colorName: "Pink", colorHex: "#FFC0CB", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-pink-hyacinth-switch-mchose-x75-v2-custom-mechanical-keyboard-for-office-gaming-1166639785.jpg?v=1754474185&width=1000", inStock: true },
+      { colorName: "Pink", colorHex: "#FF69B4", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-pink-hyacinth-switch-mchose-x75-v2-custom-mechanical-keyboard-for-office-gaming-1166639785.jpg?v=1754474185&width=1000", inStock: true },
       { colorName: "Blue", colorHex: "#4169E1", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-blue-hyacinth-switch-mchose-x75-v2-custom-mechanical-keyboard-for-office-gaming-1166639784.jpg?v=1754474186&width=1000", inStock: true },
       { colorName: "White", colorHex: "#FFFFFF", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-retro-white-hyacinth-switch-mchose-x75-v2-custom-mechanical-keyboard-for-office-gaming-1166639783.png?v=1754474189&width=1000", inStock: true }
     ]
@@ -188,7 +188,7 @@ export const keyboards = [
     colorVariants: [
       { colorName: "White", colorHex: "#FFFFFF", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-z75s-metal-top-cover-wireless-mechanical-keyboard-1166639744.jpg?v=1754474266&width=1000", isDefault: true, inStock: true },
       { colorName: "Orange", colorHex: "#FFA500", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-z75s-metal-top-cover-wireless-mechanical-keyboard-1166639746.jpg?v=1758939461&width=1000", inStock: true },
-      { colorName: "Pink", colorHex: "#FFC0CB", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-z75s-metal-top-cover-wireless-mechanical-keyboard-1166639745.jpg?v=1754474264&width=1000", inStock: true },
+      { colorName: "Pink", colorHex: "#FF69B4", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-z75s-metal-top-cover-wireless-mechanical-keyboard-1166639745.jpg?v=1754474264&width=1000", inStock: true },
       { colorName: "Black", colorHex: "#000000", imageUrl: "https://www.mchose.store/cdn/shop/files/mchose-official-keyboard-mchose-z75s-metal-top-cover-wireless-mechanical-keyboard-1166639743.jpg?v=1754474268&width=1000", inStock: true }
     ]
   },

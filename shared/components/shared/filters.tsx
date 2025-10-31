@@ -38,7 +38,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 
   const colorItems = colors.map((item) => ({
     text: item.colorName,
-    value: item.id,
+    value: item.colorName,
   }));
 
   const updatePrices = (prices: number[]) => {
