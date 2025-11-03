@@ -1,9 +1,9 @@
 import { cn } from "@/shared/lib/utils";
+import { Trash2Icon } from "lucide-react";
 import React from "react";
 import * as CartItem from "./cart-item-details";
 import { CartItemProps } from "./cart-item-details/cart-item-details.types";
 import { CountButton } from "./count-button";
-import { Trash2Icon } from "lucide-react";
 
 interface Props extends CartItemProps {
   onClickCountButton?: (type: "plus" | "minus") => void;

@@ -24,7 +24,7 @@ export interface CartState {
 
 export const useCartStore = create<CartState>((set, get) => ({
   cartItems: [],
-  loading: false,
+  loading: true,
   error: false,
   totalAmount: "0",
 
@@ -43,36 +43,40 @@ export const useCartStore = create<CartState>((set, get) => ({
 
   updateItemQuantity: async (id: number, quantity: number) => {
     try {
-      set({ loading: true, error: false });
+      set((state) => ({
+        error: false,
+        cartItems: state.cartItems.map((item) => (item.id === id ? { ...item, disabled: true } : item)),
+      }));
+
       const data = await Api.cart.updateItemQuantity(id, quantity);
       set(getCartDetails(data));
     } catch (error) {
       console.log(error);
       set({ error: true });
     } finally {
-      set({ loading: false });
+      set((state) => ({
+        cartItems: state.cartItems.map((item) => ({
+          ...item,
+          disabled: false,
+        })),
+      }));
     }
   },
 
   removeCartItem: async (id: number) => {
     try {
       set((state) => ({
-        loading: true,
         error: false,
         cartItems: state.cartItems.map((item) => (item.id === id ? { ...item, disabled: true } : item)),
       }));
+
       const data = await Api.cart.removeCartItem(id);
       set(getCartDetails(data));
     } catch (error) {
       console.log(error);
       set({ error: true });
-    } finally {
       set((state) => ({
-        loading: false,
-        cartItems: state.cartItems.map((item) => ({
-          ...item,
-          disabled: false,
-        })),
+        cartItems: state.cartItems.map((item) => (item.id === id ? { ...item, disabled: false } : item)),
       }));
     }
   },

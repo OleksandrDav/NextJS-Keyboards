@@ -9,10 +9,12 @@ import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
 
 interface Props {
+  hasSearch?: boolean;
+  hasCart?: boolean;
   className?: string;
 }
 
-export const Header: React.FC<Props> = ({ className }) => {
+export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart = true }) => {
   return (
     <header className={cn("border-b", className)}>
       <Container className="flex items-center justify-between">
@@ -20,44 +22,37 @@ export const Header: React.FC<Props> = ({ className }) => {
         <Link href="/">
           <div className="flex items-center space-x-2">
             {/* Logo - Smaller on mobile */}
-            <div className="w-24">
-              <Image
-                src="/logo.png"
-                alt="Next Keyboards"
-                width={150}
-                height={50}
-                className="w-full h-auto"
-              />
+            <div className="w-24 h-24">
+              <Image src="/logo.png" alt="Next Keyboards" width={150} height={50} className="w-full h-auto" />
             </div>
             <div className="hidden md:block">
               <h1 className="text-2xl uppercase font-bold">Next Keyboards</h1>
-              <p className="text-sm text-gray-400 leading-3">
-                Mechanical Keyboards & Keycaps
-              </p>
+              <p className="text-sm text-gray-400 leading-3">Mechanical Keyboards & Keycaps</p>
             </div>
           </div>
         </Link>
 
         {/** Search Bar - Only on desktop */}
-        <div className="mx-10 flex-1">
-          <SearchInput />
-        </div>
+        {hasSearch && (
+          <div className="mx-10 flex-1">
+            <SearchInput />
+          </div>
+        )}
 
         {/* Right side */}
         <div className="flex items-center gap-3">
           {/* Sign In Button - Only icon on mobile */}
-          <Button
-            variant="outline"
-            className="flex items-center gap-1 p-2 md:p-2.5"
-          >
+          <Button variant="outline" className="flex items-center gap-1 p-2 md:p-2.5">
             <User size={16} />
             <span className="hidden md:inline">Sign In</span>
           </Button>
 
           {/* Cart Block - Only icon on mobile */}
-          <div>
-            <CartButton />
-          </div>
+          {hasCart && (
+            <div>
+              <CartButton />
+            </div>
+          )}
         </div>
       </Container>
     </header>

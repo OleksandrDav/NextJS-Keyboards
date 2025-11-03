@@ -7,14 +7,14 @@ export const metadata: Metadata = {
     "Next Keyboards is a keyboard store that sells mechanical keyboards, keycaps, and accessories.",
 };
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <main className="min-h-screen">
-      dashboard header
+      
       {children}
     </main>
   );

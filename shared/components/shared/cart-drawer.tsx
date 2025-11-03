@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { ReactNode } from "react";
-import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
-import Link from "next/link";
-import { Button } from "../ui";
-import { ArrowLeft, ArrowRight, Car } from "lucide-react";
-import { CartDrawerItem } from "./cart-drawer-item";
-import { getCartItemDetails } from "@/shared/lib/get-cart-item-details";
-import { useCartStore } from "@/shared/store/cart";
-import Image from "next/image";
-import { Title } from "./title";
+import { useCart } from "@/shared/hooks/use-cart";
 import { cn } from "@/shared/lib/utils";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import React, { ReactNode } from "react";
+import { Button } from "../ui";
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
+import { CartDrawerItem } from "./cart-drawer-item";
+import { Title } from "./title";
 
 interface CartDrawerProps {
   className?: string;
@@ -19,20 +18,8 @@ interface CartDrawerProps {
 }
 
 export function CartDrawer({ children, className }: CartDrawerProps) {
-  const totalAmount = useCartStore((state) => state.totalAmount);
-  const items = useCartStore((state) => state.cartItems);
-  const fetchCartItems = useCartStore((state) => state.fetchCartItems);
-  const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
-  const removeCartItem = useCartStore((state) => state.removeCartItem);
-
-  useEffect(() => {
-    fetchCartItems();
-  }, [fetchCartItems]);
-
-  const onClickCountButton = (id: number, type: "plus" | "minus", quantity: number) => {
-    const newQuantity = type === "plus" ? quantity + 1 : Math.max(1, quantity - 1);
-    updateItemQuantity(id, newQuantity);
-  };
+  const { totalAmount, items, updateItemQuantity, removeCartItem, onClickCountButton } = useCart();
+  const [redirecting, setRedirecting] = React.useState(false);
 
   return (
     <Sheet>
@@ -40,7 +27,7 @@ export function CartDrawer({ children, className }: CartDrawerProps) {
         {children}
       </SheetTrigger>
       <SheetContent className="flex flex-col gap-0 justify-between bg-[#F4F1EE]">
-        <div className={cn("flex flex-col h-[95%]", !Number(totalAmount) && "justify-center")}>
+        <div className={cn("flex flex-col flex-1", !Number(totalAmount) && "justify-center")}>
           {Number(totalAmount) > 0 && (
             <SheetHeader>
               <SheetTitle>
@@ -50,22 +37,27 @@ export function CartDrawer({ children, className }: CartDrawerProps) {
           )}
 
           {!Number(totalAmount) && (
-            <div className="flex flex-col items-center justify-center w-72 mx-auto">
-              <Image
-                src="/assets/images/Empty-Cart--Streamline-Bruxelles.png"
-                alt="Empty cart"
-                width={120}
-                height={120}
-              />
-              <Title size="sm" text="Your cart is empty" className="text-center font-bold my-2" />
-              <p className="text-center text-neutral-500 mb-5">Add some products to your cart to see them here.</p>
-              <SheetClose asChild>
-                <Button className="w-56 h-12 text-base" size="lg">
-                  <ArrowLeft className="w-5 mr-2" />
-                  Continue shopping
-                </Button>
-              </SheetClose>
-            </div>
+            <>
+              <VisuallyHidden>
+                <SheetTitle>Shopping Cart</SheetTitle>
+              </VisuallyHidden>
+              <div className="flex flex-col items-center justify-center w-72 mx-auto -mt-10">
+                <Image
+                  src="/assets/images/Empty-Cart--Streamline-Bruxelles.png"
+                  alt="Empty cart"
+                  width={120}
+                  height={120}
+                />
+                <Title size="sm" text="Your cart is empty" className="text-center font-bold my-2" />
+                <p className="text-center text-neutral-500 mb-5">Add some products to your cart to see them here.</p>
+                <SheetClose asChild>
+                  <Button className="w-56 h-12 text-base" size="lg">
+                    <ArrowLeft className="w-5 mr-2" />
+                    Continue shopping
+                  </Button>
+                </SheetClose>
+              </div>
+            </>
           )}
 
           {Number(totalAmount) > 0 && (
@@ -98,8 +90,13 @@ export function CartDrawer({ children, className }: CartDrawerProps) {
                     <span className="font-bold text-lg">{totalAmount} $</span>
                   </div>
 
-                  <Link href="/cart">
-                    <Button type="submit" className="w-full h-12 text-base">
+                  <Link href="/checkout">
+                    <Button
+                      loading={redirecting}
+                      onClick={() => setRedirecting(true)}
+                      type="submit"
+                      className="w-full h-12 text-base"
+                    >
                       Go to checkout
                       <ArrowRight className="w-5 ml-2" />
                     </Button>

@@ -15,10 +15,6 @@ export default async function Home({ searchParams }: { searchParams: GetSearchPa
 
   return (
     <>
-      <Container className="mt-5">
-        <Title text="All Keyboards" size="lg" className="font-extrabold" />
-      </Container>
-
       <TopBar layouts={topBarLayouts} />
 
       <Container className="mt-9 pb-14">
