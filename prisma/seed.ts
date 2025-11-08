@@ -7,16 +7,16 @@ async function up() {
   await prisma.user.createMany({
     data: [
       {
-        name: "Alice",
-        surname: "Smith",
+        firstName: "Alice",
+        lastName: "Smith",
         email: "alice@prisma.io",
         password: hashSync("securepassword1", 10),
         verified: new Date(),
         role: "ADMIN",
       },
       {
-        name: "Bob",
-        surname: "Johnson",
+        firstName: "Bob",
+        lastName: "Johnson",
         email: "bob@prisma.io",
         password: hashSync("securepassword2", 10),
         verified: new Date(),
@@ -49,9 +49,7 @@ async function up() {
     }
 
     // Find switch IDs for this keyboard
-    const keyboardSwitches = createdSwitches.filter((s) =>
-      keyboard.switches.includes(s.name)
-    );
+    const keyboardSwitches = createdSwitches.filter((s) => keyboard.switches.includes(s.name));
 
     // Create keyboard with relations
     const createdKeyboard = await prisma.keyboard.create({
@@ -73,10 +71,7 @@ async function up() {
             sortOrder: index,
             inStock: variant.inStock,
             additionalImages: {
-              create:
-                "additionalImages" in variant
-                  ? variant.additionalImages || []
-                  : [],
+              create: "additionalImages" in variant ? variant.additionalImages || [] : [],
             },
           })),
         },
