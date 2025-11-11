@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import React from 'react';
 import { OrderSuccessTemplate } from '@/shared/components/shared/emails/order-success';
+import { CartItemDTO } from '@/shared/services/dto/cart.dto';
 
 interface PayUNotification {
   order: {
@@ -29,6 +30,14 @@ interface PayUNotification {
       name: string;
       unitPrice: string;
       quantity: string;
+      colorVariant?: {
+        colorName: string;
+        imageUrl: string;
+      };
+      switch?: {
+        name: string;
+        type: string;
+      };
     }>;
     status: string;
   };
@@ -123,8 +132,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Parse cart items
-    const items = JSON.parse(order.items as string);
+    const items = JSON.parse(order?.items as string) as CartItemDTO[];
 
     // Send success email
     if (isSucceeded) {
@@ -134,14 +142,15 @@ export async function POST(req: NextRequest) {
           `Next Pizza / Your order #${order.id} was successful 🎉`,
           React.createElement(OrderSuccessTemplate, {
             orderId: order.id,
-            customerName: order.firstName,
+            customerName: `${order.firstName} ${order.lastName}`,
+            status: order.status,
+            address: order.address,
             totalAmount: order.totalAmount.toFixed(2),
             items,
           })
         );
       } catch (emailError) {
         console.error('PayU callback: Failed to send email:', emailError);
-        // Don't fail the callback if email fails
       }
     }
     

@@ -80,16 +80,29 @@ export async function createOrder(data: CheckoutFormValues) {
 
     console.log('[Order] Customer IP:', customerIp);
 
-    // FIX 2: Prepare products for PayU - amounts should already be in smallest currency unit (haléře for CZK)
     const products = userCart.cartItems.map(item => {
-      const basePrice = Number(item.keyboard?.basePrice || 0);
-      // Convert CZK to haléře (multiply by 100)
-      const unitPriceInHalere = Math.round(basePrice * 100);
-      
+  const basePrice = Number(item.keyboard?.basePrice || 0);
+  const switchModifier = Number(item.switch?.priceModifier || 0);
+  const discountPercentage = Number(item.keyboard?.discountPercentage || 0);
+
+    const discountedBasePrice = basePrice * (1 - discountPercentage / 100);
+    const pricePerItem = discountedBasePrice + switchModifier;
+
+  // Convert CZK → haléře (multiply by 100 and round)
+        const unitPriceInHalere = Math.round(pricePerItem * 100);
+
       return {
         name: item.keyboard?.name || 'Product',
         unitPrice: unitPriceInHalere.toString(),
         quantity: item.quantity.toString(),
+        colorVariant: {
+            colorName: item.colorVariant.colorName,
+            imageUrl: item.colorVariant.imageUrl,
+        },
+        switch: {
+            name: item.switch.name,
+            type: item.switch.type,
+        },
       };
     });
 
@@ -133,8 +146,7 @@ export async function createOrder(data: CheckoutFormValues) {
       'Next Pizza / Pay for your order #' + order.id,
       React.createElement(OrderConfirmationTemplate, {
         orderId: order.id,
-        customerName: data.firstName,
-        totalAmount: order.totalAmount.toFixed(2),
+        data: data,
         paymentUrl: paymentData.redirectUri,
       })
     );

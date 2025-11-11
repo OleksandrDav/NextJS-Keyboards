@@ -2,10 +2,18 @@
 
 import axios from "axios";
 
-interface PayUProduct {
+export interface PayUProduct {
   name: string;
   unitPrice: string;
   quantity: string;
+  colorVariant: {
+    colorName: string;
+    imageUrl: string;
+  };
+  switch: {
+    name: string;
+    type: string;
+  }
 }
 
 interface CreatePaymentProps {

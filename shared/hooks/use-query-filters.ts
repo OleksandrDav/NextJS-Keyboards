@@ -5,18 +5,29 @@ import { Filters } from "./use-filters";
 
 export const useQueryFilters = (filters: Filters) => {
   const router = useRouter();
+  const initialRender = React.useRef(true);
+
   React.useEffect(() => {
-    const params = {
-      ...filters.priceRange,
-      switches: Array.from(filters.selectedSwitches),
-      colors: Array.from(filters.selectedColors),
-      onSale: filters.onSale ? "true" : undefined,
-    };
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
 
-    const queryString = qs.stringify(params, {
-      arrayFormat: "comma",
-    });
+    // Debounce URL updates to prevent too frequent navigation
+    const timeoutId = setTimeout(() => {
+      const params = {
+        ...filters.priceRange,
+        switches: Array.from(filters.selectedSwitches),
+        colors: Array.from(filters.selectedColors),
+        onSale: filters.onSale ? "true" : undefined,
+      };
+      const queryString = qs.stringify(params, {
+        arrayFormat: "comma",
+        skipNulls: true,
+      });
+      router.push(`?${queryString}`, { scroll: false });
+    }, 300);
 
-    router.push(`?${queryString}`, { scroll: false });
-  }, [filters]);
+    return () => clearTimeout(timeoutId);
+  }, [filters, router]);
 };

@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/shared/lib/utils";
 import { User } from "lucide-react";
 import Image from "next/image";
@@ -7,6 +9,9 @@ import { Button } from "../ui";
 import { Container } from "./container";
 import { SearchInput } from "./search-input";
 import { CartButton } from "./cart-button";
+import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
+import { set } from "zod";
 
 interface Props {
   hasSearch?: boolean;
@@ -15,6 +20,17 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart = true }) => {
+  const searchParams = useSearchParams();
+
+  React.useEffect(() => {
+    if (searchParams.has('paid')) {
+      setTimeout(() => {
+        toast.success("Payment successful! Thank you for your order.");
+      }, 500);
+    }
+    console.log("Header mounted");
+  }, []);
+
   return (
     <header className={cn("border-b", className)}>
       <Container className="flex items-center justify-between">

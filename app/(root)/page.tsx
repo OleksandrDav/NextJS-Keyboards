@@ -5,8 +5,12 @@ import { serializePrismaData } from "@/shared/lib/serialize";
 import { Suspense } from "react";
 import { findKeyboards, GetSearchParams } from "@/shared/lib/find-keyboards";
 
-export default async function Home({ searchParams }: { searchParams: GetSearchParams }) {
-  const layouts = await findKeyboards(searchParams);
+export default async function Home({ searchParams }: { searchParams: Promise<GetSearchParams> }) {
+  // Await searchParams here in the page component
+  const params = await searchParams;
+  
+  // Now pass the resolved params to findKeyboards
+  const layouts = await findKeyboards(params);
 
   const topBarLayouts = layouts.map((l) => ({ id: l.id, name: l.name }));
 
