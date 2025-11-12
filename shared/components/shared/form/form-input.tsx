@@ -1,5 +1,7 @@
-import { X } from "lucide-react";
-import React from "react";
+'use client'
+
+import { X, Eye, EyeOff } from "lucide-react";
+import React, { useState } from "react";
 import { Input } from "../../ui";
 import { useFormContext } from "react-hook-form";
 
@@ -18,17 +20,24 @@ export const FormInput: React.FC<Props> = ({ className, name, label, required, .
     setValue 
   } = useFormContext();
 
+  const [showPassword, setShowPassword] = useState(false);
+  
   const value = watch(name);
   const errorMessage = errors[name]?.message as string | undefined;
+  const isPasswordField = props.type === 'password';
 
   const handleClear = () => {
     setValue(name, "", { shouldValidate: true, shouldDirty: true });
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className={className}>
       {label && (
-        <p className="font-medium mb-2">
+        <p className="font-medium mb-1">
           {label} {required && <span className="text-red-500">*</span>}
         </p>
       )}
@@ -37,19 +46,37 @@ export const FormInput: React.FC<Props> = ({ className, name, label, required, .
         <Input 
           className="h-12 text-md" 
           {...register(name)} 
-          {...props} 
+          {...props}
+          type={isPasswordField && showPassword ? 'text' : props.type}
         />
 
-        {value && (
-          <button 
-            type="button"
-            onClick={handleClear} 
-            className="absolute right-4 top-1/2 -translate-y-1/2 opacity-30 hover:opacity-100 cursor-pointer transition-opacity"
-            aria-label="Clear input"
-          >
-            <X className="h-5 w-5" />
-          </button>
-        )}
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+          {isPasswordField && (
+            <button 
+              type="button"
+              onClick={togglePasswordVisibility} 
+              className="opacity-30 hover:opacity-100 cursor-pointer transition-opacity"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? (
+                <EyeOff className="h-5 w-5" />
+              ) : (
+                <Eye className="h-5 w-5" />
+              )}
+            </button>
+          )}
+
+          {value && (
+            <button 
+              type="button"
+              onClick={handleClear} 
+              className="opacity-30 hover:opacity-100 cursor-pointer transition-opacity"
+              aria-label="Clear input"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          )}
+        </div>
       </div>
 
       {errorMessage && (

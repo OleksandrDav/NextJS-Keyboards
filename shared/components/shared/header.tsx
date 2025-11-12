@@ -1,16 +1,16 @@
 "use client";
 
 import { cn } from "@/shared/lib/utils";
-import { User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
-import { Button } from "../ui";
-import { Container } from "./container";
-import { SearchInput } from "./search-input";
-import { CartButton } from "./cart-button";
-import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
+import { CartButton } from "./cart-button";
+import { Container } from "./container";
+import { ProfileButton } from "./profile-button";
+import { SearchInput } from "./search-input";
+import { AuthModal } from "./modals/auth-modal/auth-modal";
 import { set } from "zod";
 
 interface Props {
@@ -20,15 +20,32 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart = true }) => {
+  const router = useRouter();
+  const [isAuthModalOpen, setIsAuthModalOpen] = React.useState(false);
+
   const searchParams = useSearchParams();
 
   React.useEffect(() => {
-    if (searchParams.has('paid')) {
+    let toastMessage = "";
+
+    if (searchParams.has("paid")) {
+      toastMessage = "Payment successful! Your order is being processed.";
+    }
+
+    if (searchParams.has("verified")) {
+      toastMessage = "Email verified successfully! You can now log in.";
+    }
+
+    if (toastMessage) {
       setTimeout(() => {
-        toast.success("Payment successful! Thank you for your order.");
+        router.replace("/");
+        toast.success(toastMessage, {
+          style: {
+            fontSize: "14px",
+          },
+        });
       }, 500);
     }
-    console.log("Header mounted");
   }, []);
 
   return (
@@ -58,10 +75,8 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
         {/* Right side */}
         <div className="flex items-center gap-3">
           {/* Sign In Button - Only icon on mobile */}
-          <Button variant="outline" className="flex items-center gap-1 p-2 md:p-2.5">
-            <User size={16} />
-            <span className="hidden md:inline">Sign In</span>
-          </Button>
+          <AuthModal open={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
+          <ProfileButton onClickSignIn={() => setIsAuthModalOpen(true)} />
 
           {/* Cart Block - Only icon on mobile */}
           {hasCart && (

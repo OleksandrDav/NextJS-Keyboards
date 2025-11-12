@@ -9,7 +9,20 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      // Add more hostnames as needed for other keyboard images
+      // Google OAuth profile images
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      // GitHub profile images
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

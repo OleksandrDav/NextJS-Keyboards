@@ -18,7 +18,7 @@ export const CartButton: React.FC<Props> = ({ className }) => {
   
   return (
     <CartDrawer>
-      <Button loading={loading} className={cn("group relative p-2 md:p-2.5", {'w-[105px]': loading} ,className)}>
+      <Button loading={loading} className={cn("group relative p-2 md:p-2.5", {'w-[95px]': loading} ,className)}>
         <b className="hidden md:inline">{totalAmount} $</b>
         <span className="h-full w-[1px] bg-white/30 mx-2 hidden md:inline" />
         <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">

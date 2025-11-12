@@ -22,7 +22,7 @@ export const checkoutFormSchema = z.object({
     .min(5, { message: "Phone number is too short" })
     .max(20, { message: "Phone number is too long" })
     .refine(validateInternationalPhone, { 
-      message: "Please enter a valid international phone number" 
+      message: "Please enter a valid international phone number (+...)" 
     }),
   address: z.string().min(10, { message: "Address must be at least 10 characters long" }).max(200),
   city: z.string().min(2, { message: "City must be at least 2 characters long" }).max(100),
