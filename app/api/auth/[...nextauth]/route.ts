@@ -142,7 +142,7 @@ export const authOptions: AuthOptions = {
         return false;
       }
     },
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger }) {
       if (user) {
         token.id = user.id;
         token.role = user.role;
@@ -150,10 +150,13 @@ export const authOptions: AuthOptions = {
 
       if (!token.email) {
         return token;
-      }
+      } 
 
       const findUser = await prisma.user.findUnique({
         where: { email: token.email },
+        include: {
+          carts: true,
+        },
       });
 
       if (findUser) {
@@ -162,6 +165,11 @@ export const authOptions: AuthOptions = {
         token.firstName = findUser.firstName;
         token.lastName = findUser.lastName;
         token.role = findUser.role;
+        
+        // Add cart token to JWT if user has a cart
+        if (findUser.carts) {
+          token.cartToken = findUser.carts.token;
+        }
       }
       return token;
     },
@@ -171,6 +179,11 @@ export const authOptions: AuthOptions = {
         session.user.role = token.role as UserRole;
         session.user.firstName = token.firstName as string;
         session.user.lastName = token.lastName as string;
+        
+        // Add cartToken to session
+        if (token.cartToken) {
+          session.cartToken = token.cartToken as string;
+        }
       }
       return session;
     },

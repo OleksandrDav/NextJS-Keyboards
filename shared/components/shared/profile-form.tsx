@@ -63,6 +63,7 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
   };
 
   const onClickSignOut = () => {
+    document.cookie = "cartToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     signOut({
       callbackUrl: "/",
     });

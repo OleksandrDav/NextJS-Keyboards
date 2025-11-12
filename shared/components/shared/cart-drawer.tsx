@@ -21,6 +21,8 @@ export function CartDrawer({ children, className }: CartDrawerProps) {
   const { totalAmount, items, updateItemQuantity, removeCartItem, onClickCountButton } = useCart();
   const [redirecting, setRedirecting] = React.useState(false);
 
+  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <Sheet>
       <SheetTrigger asChild className={className}>
@@ -31,7 +33,7 @@ export function CartDrawer({ children, className }: CartDrawerProps) {
           {Number(totalAmount) > 0 && (
             <SheetHeader>
               <SheetTitle>
-                In cart <span className="font-bold">({items.length} items)</span>
+                In cart <span className="font-bold">({totalQuantity} items)</span>
               </SheetTitle>
             </SheetHeader>
           )}
