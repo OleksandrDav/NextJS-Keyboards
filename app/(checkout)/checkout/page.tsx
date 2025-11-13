@@ -61,12 +61,12 @@ export default function CheckoutPage() {
   });
 
   return (
-    <Container className="mt-5">
-      <Title text="Checkout" size="lg" className="font-extrabold mb-8" />
+    <Container className="mt-2">
+      <Title text="Checkout" size="lg" className="font-extrabold mb-3" />
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="flex gap-10">
-            <div className="flex flex-col gap-8 flex-1 mb-20">
+          <div className="flex flex-col xl:flex-row gap-10">
+            <div className="flex flex-col gap-8 flex-1 xl:mb-20">
               <CheckoutCartSummary
                 items={items}
                 removeCartItem={removeCartItem}

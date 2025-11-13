@@ -16,7 +16,7 @@ export default function HomeLayout({
 }>) {
   return (
     <main className="min-h-screen">
-      <Header />
+      <Header className="sticky top-0 bg-white z-50 "/>
       {children}
       {modal}
     </main>

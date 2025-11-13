@@ -49,14 +49,14 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
   }, []);
 
   return (
-    <header className={cn("sticky top-0 bg-white z-50 border-b", className)}>
+    <header className={cn("border-b", className)}>
       <Container className="flex items-center justify-between">
         {/* Left side */}
         <Link href="/">
           <div className="flex items-center space-x-2">
             {/* Logo - Smaller on mobile */}
             <div className="w-18 h-18">
-              <Image src="/logo.png" alt="Next Keyboards" width={72} height={72 } className="w-full h-auto" />
+              <Image src="/logo.png" alt="Next Keyboards" width={72} height={72} className="w-full h-auto" />
             </div>
             <div className="hidden lg:block">
               <h1 className="text-2xl uppercase font-bold">Next Keyboards</h1>
@@ -76,7 +76,7 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
         <div className="flex items-center gap-3">
           {/* Sign In Button - Only icon on mobile */}
           <AuthModal open={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
-          <ProfileButton onClickSignIn={() => setIsAuthModalOpen(true)} />
+          <ProfileButton onClickSignIn={() => setIsAuthModalOpen(true)} hasSearch={hasSearch} />
 
           {/* Cart Block - Only icon on mobile */}
           {hasCart && (

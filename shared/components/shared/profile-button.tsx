@@ -8,10 +8,11 @@ import Image from "next/image";
 
 interface Props {
   onClickSignIn?: () => void;
+  hasSearch?: boolean;
   className?: string;
 }
 
-export const ProfileButton: React.FC<Props> = ({ className, onClickSignIn }) => {
+export const ProfileButton: React.FC<Props> = ({ className, onClickSignIn, hasSearch }) => {
   const { data: session, status } = useSession();
 
   const getDisplayName = () => {
@@ -34,7 +35,7 @@ export const ProfileButton: React.FC<Props> = ({ className, onClickSignIn }) => 
           className={cn("flex items-center gap-1 p-2 md:p-2.5", { "w-[90px]": status === "loading" })}
         >
           <User size={16} />
-          <span className="hidden md:inline">Sign In</span>
+          <span className={cn({ "hidden md:inline": hasSearch })}>Sign In</span>
         </Button>
       ) : (
         <Link href="/profile">
@@ -50,7 +51,7 @@ export const ProfileButton: React.FC<Props> = ({ className, onClickSignIn }) => 
             ) : (
               <CircleUser size={16} />
             )}
-            <span className="hidden md:inline">{getDisplayName()}</span>
+            <span className={cn({ "hidden md:inline": hasSearch })}>{getDisplayName()}</span>
           </Button>
         </Link>
       )}

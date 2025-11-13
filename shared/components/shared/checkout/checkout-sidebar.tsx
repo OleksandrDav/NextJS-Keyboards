@@ -22,8 +22,8 @@ export const CheckoutSidebar: React.FC<Props> = ({ className, totalAmount, loadi
   const finalPrice = totalWithVAT + SHIPPING_COST;
 
   return (
-    <div className={cn("w-[450px]", className)}>
-      <WhiteBlock className="p-6 pt-3.5 sticky top-4">
+    <div className={cn("w-full xl:w-[450px] max-xl:mb-20", className)}>
+      <WhiteBlock className="p-6 pt-3.5 xl:sticky xl:top-4">
         <CheckoutResultDetails
           title={
             <div className="flex items-center">
