@@ -49,16 +49,16 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
   }, []);
 
   return (
-    <header className={cn("border-b", className)}>
+    <header className={cn("sticky top-0 bg-white z-50 border-b", className)}>
       <Container className="flex items-center justify-between">
         {/* Left side */}
         <Link href="/">
           <div className="flex items-center space-x-2">
             {/* Logo - Smaller on mobile */}
-            <div className="w-24 h-24">
-              <Image src="/logo.png" alt="Next Keyboards" width={150} height={50} className="w-full h-auto" />
+            <div className="w-18 h-18">
+              <Image src="/logo.png" alt="Next Keyboards" width={72} height={72 } className="w-full h-auto" />
             </div>
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <h1 className="text-2xl uppercase font-bold">Next Keyboards</h1>
               <p className="text-sm text-gray-400 leading-3">Mechanical Keyboards & Keycaps</p>
             </div>
@@ -67,7 +67,7 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
 
         {/** Search Bar - Only on desktop */}
         {hasSearch && (
-          <div className="mx-10 flex-1">
+          <div className="mr-5 md:mx-10 flex-1">
             <SearchInput />
           </div>
         )}

@@ -38,7 +38,7 @@ export const ProfileButton: React.FC<Props> = ({ className, onClickSignIn }) => 
         </Button>
       ) : (
         <Link href="/profile">
-          <Button variant="secondary" className="flex items-center gap-2">
+          <Button variant="secondary" className="flex items-center gap-2 p-3 md:px-4 md:py-2">
             {session.user?.image ? (
               <Image
                 src={session.user.image}

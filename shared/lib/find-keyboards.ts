@@ -17,9 +17,26 @@ export const findKeyboards = async (params: GetSearchParams) => {
   const colorsIdArray = params.colors?.split(",");
   const switchesIdArray = params.switches?.split(",");
   const onSale = params.onSale === "true";
+  const sortBy = params.sortBy || "price_asc";
 
   const minPrice = Number(params.min) || DEFAULT_MIN_PRICE;
   const maxPrice = Number(params.max) || DEFAULT_MAX_PRICE;
+
+  // Build orderBy clause based on sortBy parameter
+  const getOrderBy = () => {
+    switch (sortBy) {
+      case "price_asc":
+        return { basePrice: "asc" as const };
+      case "price_desc":
+        return { basePrice: "desc" as const };
+      case "newest":
+        return { createdAt: "desc" as const };
+      case "oldest":
+        return { createdAt: "asc" as const };
+      default:
+        return { basePrice: "asc" as const };
+    }
+  };
 
   const layouts = await prisma.layout.findMany({
     where: {
@@ -29,9 +46,6 @@ export const findKeyboards = async (params: GetSearchParams) => {
     },
     include: {
       keyboards: {
-        orderBy: {
-          [params.sortBy || "createdAt"]: "desc",
-        },
         where: {
           // Combine all conditions in one where object
           ...(switchesIdArray && {
@@ -59,6 +73,7 @@ export const findKeyboards = async (params: GetSearchParams) => {
             lte: maxPrice,
           },
         },
+        orderBy: getOrderBy(),
         include: {
           switches: true,
           colorVariants: {

@@ -21,7 +21,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Get
     <>
       <TopBar layouts={topBarLayouts} />
 
-      <Container className="mt-9 pb-14">
+      <Container className="mt-4 pb-14">
         <div className="flex gap-[60px]">
           {/* Filters */}
           <div>
