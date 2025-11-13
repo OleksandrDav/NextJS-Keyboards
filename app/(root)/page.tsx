@@ -1,4 +1,4 @@
-import { Container, Filters, Title, TopBar } from "@/shared/components/shared";
+import { Container, Filters, Title, TopBar, MobileControls } from "@/shared/components/shared";
 import { ProductGroupList } from "@/shared/components/shared/products-group-list";
 import { prisma } from "@/prisma/prisma-client";
 import { serializePrismaData } from "@/shared/lib/serialize";
@@ -23,8 +23,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Get
 
       <Container className="mt-4 pb-14">
         <div className="flex gap-[60px]">
-          {/* Filters */}
-          <div>
+          <div className="hidden lg:block">
             <Suspense fallback={<div>Loading filters...</div>}>
               <Filters />
             </Suspense>
@@ -32,6 +31,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<Get
 
           {/* Keyboards */}
           <div className="flex-1">
+            <MobileControls />
+            
             <div className="flex flex-col gap-16">
               {serializedLayouts.map(
                 (layout) =>

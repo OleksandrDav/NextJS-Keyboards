@@ -16,3 +16,5 @@ export { SearchInput } from './search-input';
 export { SortPopup } from './sort-popup';
 export { Title } from './title';
 export { TopBar } from './top-bar';
+export { MobileControls } from './mobile-controls';
+export { FiltersDrawer } from './filters-drawer';
