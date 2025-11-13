@@ -3,7 +3,7 @@
 import { createSlug } from "@/shared/lib/create-slug";
 import { cn } from "@/shared/lib/utils";
 import { useCategoryStore } from "@/shared/store/category";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useIntersection } from "react-use";
 import { ProductCard } from "./product-card";
 import { Title } from "./title";
@@ -20,15 +20,29 @@ interface Props {
 export const ProductGroupList: React.FC<Props> = ({ title, items, listClassName, layoutId, className }) => {
   const setActiveLayoutId = useCategoryStore((state) => state.setActiveId);
   const intersectionRef = useRef(null);
+  const [threshold, setThreshold] = useState(0.6);
+
+  // Adjust threshold based on screen size
+  useEffect(() => {
+    const updateThreshold = () => {
+      // On mobile (< 640px), use a lower threshold
+      setThreshold(window.innerWidth < 640 ? 0.2 : 0.6);
+    };
+    
+    updateThreshold();
+    window.addEventListener('resize', updateThreshold);
+    return () => window.removeEventListener('resize', updateThreshold);
+  }, []);
+
   const intersection = useIntersection(intersectionRef as unknown as React.RefObject<HTMLElement>, {
-    threshold: 0.6,
+    threshold,
   });
 
   React.useEffect(() => {
     if (intersection?.isIntersecting) {
       setActiveLayoutId(layoutId);
     }
-  }, [layoutId, intersection?.isIntersecting, title]);
+  }, [layoutId, intersection?.isIntersecting, setActiveLayoutId]);
 
   const slug = createSlug(title);
 
