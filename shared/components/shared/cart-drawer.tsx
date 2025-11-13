@@ -28,8 +28,8 @@ export function CartDrawer({ children, className }: CartDrawerProps) {
       <SheetTrigger asChild className={className}>
         {children}
       </SheetTrigger>
-      <SheetContent className="flex flex-col gap-0 justify-between bg-[#F4F1EE]">
-        <div className={cn("flex flex-col flex-1", !Number(totalAmount) && "justify-center")}>
+      <SheetContent className="flex flex-col gap-0 justify-between bg-[#F4F1EE] p-0">
+        <div className={cn("flex flex-col h-full", !Number(totalAmount) && "justify-center")}>
           {Number(totalAmount) > 0 && (
             <SheetHeader>
               <SheetTitle>
@@ -43,7 +43,7 @@ export function CartDrawer({ children, className }: CartDrawerProps) {
               <VisuallyHidden>
                 <SheetTitle>Shopping Cart</SheetTitle>
               </VisuallyHidden>
-              <div className="flex flex-col items-center justify-center w-72 mx-auto -mt-10">
+              <div className="flex flex-col items-center justify-center w-72 mx-auto px-6">
                 <Image
                   src="/assets/images/Empty-Cart--Streamline-Bruxelles.png"
                   alt="Empty cart"
@@ -64,7 +64,8 @@ export function CartDrawer({ children, className }: CartDrawerProps) {
 
           {Number(totalAmount) > 0 && (
             <>
-              <div className="overflow-auto flex-1 scrollbar mb-1">
+              {/* Scrollable items container */}
+              <div className="flex-1 overflow-auto pt-2 scrollbar">
                 {items.map((item) => (
                   <div className="mb-2" key={item.id}>
                     <CartDrawerItem
@@ -82,7 +83,8 @@ export function CartDrawer({ children, className }: CartDrawerProps) {
                 ))}
               </div>
 
-              <SheetFooter className="bg-white p-8 py-6">
+              {/* Always visible footer */}
+              <SheetFooter className="bg-white p-6 border-t mt-auto">
                 <div className="w-full">
                   <div className="flex mb-4">
                     <span className="flex flex-1 text-lg text-neutral-500">
@@ -92,7 +94,7 @@ export function CartDrawer({ children, className }: CartDrawerProps) {
                     <span className="font-bold text-lg">{totalAmount} $</span>
                   </div>
 
-                  <Link href="/checkout">
+                  <Link href="/checkout" className="block">
                     <Button
                       loading={redirecting}
                       onClick={() => setRedirecting(true)}
