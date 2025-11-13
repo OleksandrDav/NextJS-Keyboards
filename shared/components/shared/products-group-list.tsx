@@ -17,13 +17,7 @@ interface Props {
   className?: string;
 }
 
-export const ProductGroupList: React.FC<Props> = ({ 
-  title, 
-  items, 
-  listClassName, 
-  layoutId, 
-  className 
-}) => {
+export const ProductGroupList: React.FC<Props> = ({ title, items, listClassName, layoutId, className }) => {
   const setActiveLayoutId = useCategoryStore((state) => state.setActiveId);
   const intersectionRef = useRef(null);
   const intersection = useIntersection(intersectionRef as unknown as React.RefObject<HTMLElement>, {
@@ -42,7 +36,15 @@ export const ProductGroupList: React.FC<Props> = ({
     <div className={className} id={slug} ref={intersectionRef}>
       <Title text={title} size="lg" className="font-extrabold mb-5" />
 
-      <div className={cn("grid gap-10 grid-cols-[repeat(auto-fill,minmax(290px,1fr))]", listClassName)}>
+      <div
+        className={cn(
+          "grid gap-6",
+          "grid-cols-[repeat(auto-fill,minmax(280px,1fr))]",
+          "sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]",
+          "lg:grid-cols-[repeat(auto-fill,minmax(320px,1fr))]",
+          listClassName
+        )}
+      >
         {items.map((product) => (
           <ProductCard
             key={product.id}
@@ -51,7 +53,7 @@ export const ProductGroupList: React.FC<Props> = ({
             price={product.basePrice.toFixed(2)}
             imageUrl={product.colorVariants[0]?.imageUrl}
             discountPercentage={product.discountPercentage}
-            colorVariants={product.colorVariants.map(variant => ({
+            colorVariants={product.colorVariants.map((variant) => ({
               id: variant.id,
               colorName: variant.colorName,
               colorHex: variant.colorHex,

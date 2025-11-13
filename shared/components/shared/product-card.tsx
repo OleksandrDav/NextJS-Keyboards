@@ -35,7 +35,7 @@ export const ProductCard: React.FC<Props> = ({
   const defaultImage = imageUrl || colorVariants[0]?.imageUrl || "https://www.mchose.store/cdn/shop/files/mchose-official-mountains-gradient-mist-blue-switch-mchose-gx87s-aluminum-custom-mechanical-keyboard-1166639623.png?v=1754474595&width=1000";
 
   return (
-    <div className={cn("min-w-[290px] max-w-[320px]", className)}>
+    <div className={cn("w-full max-w-[400px] mx-auto", className)}>
       <Link href={`/keyboard/${id}`}>
         <div className="flex flex-col h-full">
           <ColorSelector
@@ -47,7 +47,7 @@ export const ProductCard: React.FC<Props> = ({
           <Title text={name} size="sm" className="mb-1 mt-3 font-bold min-h-[3rem] flex-1" />
 
           <div className="flex justify-between items-center mt-auto pt-4">
-            <span className="text-[20px] whitespace-nowrap">
+            <span className="text-[18px] sm:text-[20px] whitespace-nowrap">
               from <b>{price} $</b>
             </span>
             <Button variant="secondary" className="text-base font-bold flex-shrink-0">
