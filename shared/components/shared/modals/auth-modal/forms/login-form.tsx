@@ -30,17 +30,19 @@ export const LoginForm: React.FC<Props> = ({ onClose }) => {
 
       if (!resp?.ok) {
         let errorMessage = "An error occurred while logging in. Please try again.";
-        
+
         if (resp?.error) {
           const errorLower = resp.error.toLowerCase();
-          
-          if (errorLower.includes("no user found") || errorLower.includes("email")) {
+
+          if (errorLower.includes("no user found") || errorLower.includes("no account found")) {
             errorMessage = "No account found with this email address.";
-          } else if (errorLower.includes("incorrect password") || errorLower.includes("password")) {
+          } else if (errorLower.includes("incorrect password")) {
             errorMessage = "Incorrect password. Please try again.";
           } else if (errorLower.includes("verify") || errorLower.includes("verified")) {
             errorMessage = "Please verify your email address before logging in.";
-          }
+          } else {
+          errorMessage = resp.error;
+        }
         }
 
         toast.error(errorMessage, {

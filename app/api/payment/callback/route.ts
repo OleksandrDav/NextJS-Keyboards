@@ -132,8 +132,15 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    const items = JSON.parse(order?.items as string) as CartItemDTO[];
+    let items: CartItemDTO[];
 
+    if (typeof order.items === 'string') {
+      // If items is stored as a string, parse it
+      items = JSON.parse(order.items) as CartItemDTO[];
+    } else {
+      // If items is already an object, use it directly
+      items = order.items as unknown as CartItemDTO[];
+    }
     // Send success email
     if (isSucceeded) {
       try {

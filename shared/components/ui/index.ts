@@ -10,3 +10,7 @@ export { Select } from './select';
 export { Skeleton } from './skeleton';
 export { Slider } from './slider';
 export { Textarea } from './textarea';
+export * from './tabs';
+export * from './card';
+export { Badge } from './badge';
+

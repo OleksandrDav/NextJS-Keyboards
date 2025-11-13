@@ -1,17 +1,25 @@
 import { prisma } from "@/prisma/prisma-client";
-import { ProfileForm } from "@/shared/components/shared/profile-form";
+import { ProfilePage } from "@/shared/components/shared/profile-page/profile-page";
 import { getUserSession } from "@/shared/lib/get-user-session";
 import { redirect } from "next/navigation";
+import { serializePrismaData } from "@/shared/lib/serialize";
 
-export default async function ProfilePage() {
+export default async function Profile() {
     const session = await getUserSession();
     if (!session) {
-        return redirect("/not-auth")
-    }   
+        return redirect("/not-auth");
+    }
 
     const user = await prisma.user.findFirst({
         where: {
             id: Number(session.id),
+        },
+        include: {
+            orders: {
+                orderBy: {
+                    createdAt: "desc",
+                },
+            },
         },
     });
 
@@ -19,5 +27,7 @@ export default async function ProfilePage() {
         return redirect("/not-auth");
     }
 
-    return <ProfileForm data={user} />;
+    const serializedUser = serializePrismaData(user);
+
+    return <ProfilePage user={serializedUser} />;
 }

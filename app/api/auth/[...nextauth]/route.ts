@@ -60,19 +60,20 @@ export const authOptions: AuthOptions = {
         const findUser = await prisma.user.findUnique({
           where: values,
         });
+        
 
         if (!findUser) {
           throw new Error("No user found with this email");
+        }
+        
+        if (!findUser.verified) {
+          throw new Error("Please verify your email before logging in");
         }
 
         const isPasswordValid = await compare(credentials.password, findUser.password);
 
         if (!isPasswordValid) {
           throw new Error("Incorrect password");
-        }
-
-        if (!findUser.verified) {
-          throw new Error("Please verify your email before logging in");
         }
 
         return {

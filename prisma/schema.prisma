@@ -190,10 +190,12 @@ model VerificationCode {
     user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId Int  @unique
 
-    code String // The verification code
+    code      String // The verification code
+    expiresAt DateTime 
+    type      String   @default("EMAIL_VERIFICATION")
 
     createdAt DateTime @default(now())
-    
+
     @@unique([userId, code])
 }
 

@@ -11,7 +11,10 @@ import { getUserSession } from "@/shared/lib/get-user-session";
 import { hashSync } from "bcrypt";
 import { Prisma } from "@prisma/client";
 import { UserVerification } from "@/shared/components/shared/emails/user-verification";
-import { ProfileUpdateFormValues, RegistrationFormValues } from "@/shared/components/shared/modals/auth-modal/forms/schema";
+import {
+  ProfileUpdateFormValues,
+  RegistrationFormValues,
+} from "@/shared/components/shared/modals/auth-modal/forms/schema";
 
 export async function createOrder(data: CheckoutFormValues) {
   try {
@@ -44,13 +47,46 @@ export async function createOrder(data: CheckoutFormValues) {
       throw new Error("Cart is empty");
     }
 
+    const orderItems = userCart.cartItems.map((item) => ({
+      id: item.id,
+      cartId: item.cartId,
+      keyboardId: item.keyboardId,
+      colorVariantId: item.colorVariantId,
+      switchId: item.switchId,
+      quantity: item.quantity,
+      keyboard: {
+        id: item.keyboard.id,
+        name: item.keyboard.name,
+        basePrice: item.keyboard.basePrice,
+        discountPercentage: item.keyboard.discountPercentage,
+        description: item.keyboard.description,
+      },
+      colorVariant: {
+        id: item.colorVariant.id,
+        colorName: item.colorVariant.colorName,
+        colorHex: item.colorVariant.colorHex,
+        imageUrl: item.colorVariant.imageUrl,
+      },
+      switch: {
+        id: item.switch.id,
+        name: item.switch.name,
+        type: item.switch.type,
+        priceModifier: item.switch.priceModifier,
+      },
+      calculatedPrice: (
+        Number(item.keyboard.basePrice) * (1 - Number(item.keyboard.discountPercentage) / 100) +
+        Number(item.switch.priceModifier)
+      ).toString(),
+    }));
+
     const order = await prisma.order.create({
       data: {
         token: cartToken,
+        userId: userCart.user?.id,
         totalAmount: userCart.totalAmount,
         firstName: data.firstName,
         lastName: data.lastName,
-        items: JSON.stringify(userCart.cartItems),
+        items: orderItems,
         email: data.email,
         phone: data.phone,
         address: data.address,
@@ -208,12 +244,7 @@ export async function updateUserInfo(body: ProfileUpdateFormValues) {
   }
 }
 
-export async function createUser(body: {
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-}) {
+export async function createUser(body: { email: string; firstName: string; lastName: string; password: string }) {
   try {
     const existingUser = await prisma.user.findFirst({
       where: {
@@ -240,6 +271,7 @@ export async function createUser(body: {
       data: {
         userId: createdUser.id,
         code,
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), 
       },
     });
 
