@@ -3,14 +3,13 @@
 import { cn } from "@/shared/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import React from "react";
-import { toast } from "sonner";
+import React, { Suspense } from "react";
 import { CartButton } from "./cart-button";
 import { Container } from "./container";
 import { ProfileButton } from "./profile-button";
 import { SearchInput } from "./search-input";
 import { AuthModal } from "./modals/auth-modal/auth-modal";
+import { HeaderToastHandler } from "./header-toast-handler";
 
 interface Props {
   hasSearch?: boolean;
@@ -19,41 +18,20 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart = true }) => {
-  const router = useRouter();
   const [isAuthModalOpen, setIsAuthModalOpen] = React.useState(false);
   const [isMobileSearchExpanded, setIsMobileSearchExpanded] = React.useState(false);
 
-  const searchParams = useSearchParams();
-
-  React.useEffect(() => {
-    let toastMessage = "";
-
-    if (searchParams.has("paid")) {
-      toastMessage = "Payment successful! Your order is being processed.";
-    }
-
-    if (searchParams.has("verified")) {
-      toastMessage = "Email verified successfully! You can now log in.";
-    }
-
-    if (toastMessage) {
-      setTimeout(() => {
-        router.replace("/");
-        toast.success(toastMessage, {
-          style: {
-            fontSize: "14px",
-          },
-        });
-      }, 500);
-    }
-  }, []);
-
   return (
     <header className={cn("border-b", className)}>
+      {/* Wrap the toast handler in Suspense */}
+      <Suspense fallback={null}>
+        <HeaderToastHandler />
+      </Suspense>
+
       <Container className="flex items-center justify-between relative">
         {/* Left side */}
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className={cn(
             "transition-opacity duration-300",
             isMobileSearchExpanded && "md:opacity-100 opacity-0 pointer-events-none md:pointer-events-auto"
@@ -73,19 +51,23 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
 
         {/** Search Bar */}
         {hasSearch && (
-          <div className={cn(
-            "mr-5 md:mx-10 flex-1 transition-all duration-300",
-            isMobileSearchExpanded && "md:flex-1 absolute left-0 right-0 px-4"
-          )}>
+          <div
+            className={cn(
+              "mr-5 md:mx-10 flex-1 transition-all duration-300",
+              isMobileSearchExpanded && "md:flex-1 absolute left-0 right-0 px-4"
+            )}
+          >
             <SearchInput onMobileExpand={setIsMobileSearchExpanded} />
           </div>
         )}
 
         {/* Right side */}
-        <div className={cn(
-          "flex items-center gap-3 transition-opacity duration-300",
-          isMobileSearchExpanded && "md:opacity-100 opacity-0 pointer-events-none md:pointer-events-auto"
-        )}>
+        <div
+          className={cn(
+            "flex items-center gap-3 transition-opacity duration-300",
+            isMobileSearchExpanded && "md:opacity-100 opacity-0 pointer-events-none md:pointer-events-auto"
+          )}
+        >
           {/* Sign In Button - Only icon on mobile */}
           <AuthModal open={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
           <ProfileButton onClickSignIn={() => setIsAuthModalOpen(true)} hasSearch={hasSearch} />

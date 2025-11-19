@@ -23,27 +23,30 @@ interface Props {
   className?: string;
 }
 
-export const ProductCard: React.FC<Props> = ({ 
-  id, 
-  name, 
-  price, 
-  imageUrl, 
+export const ProductCard: React.FC<Props> = ({
+  id,
+  name,
+  price,
+  imageUrl,
   discountPercentage,
   colorVariants,
-  className 
+  className,
 }) => {
-  const defaultImage = imageUrl || colorVariants[0]?.imageUrl || "https://www.mchose.store/cdn/shop/files/mchose-official-mountains-gradient-mist-blue-switch-mchose-gx87s-aluminum-custom-mechanical-keyboard-1166639623.png?v=1754474595&width=1000";
+  const defaultImage =
+    imageUrl ||
+    colorVariants[0]?.imageUrl ||
+    "https://www.mchose.store/cdn/shop/files/mchose-official-mountains-gradient-mist-blue-switch-mchose-gx87s-aluminum-custom-mechanical-keyboard-1166639623.png?v=1754474595&width=1000";
 
   return (
     <div className={cn("w-full max-w-[400px] mx-auto", className)}>
-      <Link href={`/keyboard/${id}`}>
-        <div className="flex flex-col h-full">
-          <ColorSelector
-            colorVariants={colorVariants}
-            defaultImageUrl={defaultImage}
-            discountPercentage={discountPercentage}
-          />
-
+      <div className="flex flex-col h-full">
+        <ColorSelector
+          colorVariants={colorVariants}
+          defaultImageUrl={defaultImage}
+          discountPercentage={discountPercentage}
+          id={id}
+        />
+        <Link href={`/keyboard/${id}`}>
           <Title text={name} size="sm" className="mb-1 mt-3 font-bold min-h-[3rem] flex-1" />
 
           <div className="flex justify-between items-center mt-auto pt-4">
@@ -55,8 +58,8 @@ export const ProductCard: React.FC<Props> = ({
               Add to Cart
             </Button>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 };

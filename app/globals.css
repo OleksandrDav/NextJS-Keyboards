@@ -199,3 +199,16 @@ input[type="number"] {
     transform: rotate(-360deg);
   }
 }
+
+/* Add this to your global CSS */
+@media (hover: none) and (pointer: coarse) {
+  .color-selector-hover {
+    pointer-events: auto;
+  }
+  
+  .color-selector-hover:hover {
+    /* Reset any hover styles */
+    border-color: inherit;
+    transform: none;
+  }
+}

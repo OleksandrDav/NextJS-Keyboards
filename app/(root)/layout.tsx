@@ -1,7 +1,5 @@
-import type { Metadata } from "next";
 import { Header } from "@/shared/components/shared";
-import { Suspense } from "react";
-import { HeaderSkeleton } from "@/shared/components/shared/header-skelton";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Next Keyboards | Main",
@@ -17,9 +15,7 @@ export default function HomeLayout({
 }>) {
   return (
     <main className="min-h-screen">
-      <Suspense fallback={<HeaderSkeleton className="sticky top-0 bg-white z-50 " />}>
-        <Header className="sticky top-0 bg-white z-50 " />
-      </Suspense>
+      <Header className="sticky top-0 bg-white z-50 " />
       {children}
       {modal}
     </main>
