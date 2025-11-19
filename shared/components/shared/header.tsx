@@ -11,7 +11,6 @@ import { Container } from "./container";
 import { ProfileButton } from "./profile-button";
 import { SearchInput } from "./search-input";
 import { AuthModal } from "./modals/auth-modal/auth-modal";
-import { set } from "zod";
 
 interface Props {
   hasSearch?: boolean;
@@ -22,6 +21,7 @@ interface Props {
 export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart = true }) => {
   const router = useRouter();
   const [isAuthModalOpen, setIsAuthModalOpen] = React.useState(false);
+  const [isMobileSearchExpanded, setIsMobileSearchExpanded] = React.useState(false);
 
   const searchParams = useSearchParams();
 
@@ -50,9 +50,15 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
 
   return (
     <header className={cn("border-b", className)}>
-      <Container className="flex items-center justify-between">
+      <Container className="flex items-center justify-between relative">
         {/* Left side */}
-        <Link href="/">
+        <Link 
+          href="/" 
+          className={cn(
+            "transition-opacity duration-300",
+            isMobileSearchExpanded && "md:opacity-100 opacity-0 pointer-events-none md:pointer-events-auto"
+          )}
+        >
           <div className="flex items-center space-x-2">
             {/* Logo - Smaller on mobile */}
             <div className="w-18 h-18">
@@ -65,15 +71,21 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
           </div>
         </Link>
 
-        {/** Search Bar - Only on desktop */}
+        {/** Search Bar */}
         {hasSearch && (
-          <div className="mr-5 md:mx-10 flex-1">
-            <SearchInput />
+          <div className={cn(
+            "mr-5 md:mx-10 flex-1 transition-all duration-300",
+            isMobileSearchExpanded && "md:flex-1 absolute left-0 right-0 px-4"
+          )}>
+            <SearchInput onMobileExpand={setIsMobileSearchExpanded} />
           </div>
         )}
 
         {/* Right side */}
-        <div className="flex items-center gap-3">
+        <div className={cn(
+          "flex items-center gap-3 transition-opacity duration-300",
+          isMobileSearchExpanded && "md:opacity-100 opacity-0 pointer-events-none md:pointer-events-auto"
+        )}>
           {/* Sign In Button - Only icon on mobile */}
           <AuthModal open={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
           <ProfileButton onClickSignIn={() => setIsAuthModalOpen(true)} hasSearch={hasSearch} />

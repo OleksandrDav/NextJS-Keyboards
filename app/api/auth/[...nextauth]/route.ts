@@ -1,10 +1,11 @@
+import { prisma } from "@/prisma/prisma-client";
+import { UserRole } from "@prisma/client";
+import { compare, hashSync } from "bcrypt";
 import NextAuth, { AuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { prisma } from "@/prisma/prisma-client";
-import { compare, hashSync } from "bcrypt";
-import { UserRole } from "@prisma/client";
+import { cookies } from "next/headers";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -60,12 +61,11 @@ export const authOptions: AuthOptions = {
         const findUser = await prisma.user.findUnique({
           where: values,
         });
-        
 
         if (!findUser) {
           throw new Error("No user found with this email");
         }
-        
+
         if (!findUser.verified) {
           throw new Error("Please verify your email before logging in");
         }
@@ -126,6 +126,26 @@ export const authOptions: AuthOptions = {
           return true;
         }
 
+        const cookieStore = await cookies();
+        const cartToken = cookieStore.get("cartToken")?.value;
+
+        if (cartToken) {
+          const guestCart = await prisma.cart.findFirst({
+            where: {
+              token: cartToken,
+              userId: null,
+            },
+          });
+
+          if (guestCart) {
+            await prisma.cart.delete({
+              where: { id: guestCart.id },
+            });
+          }
+        }
+
+        cookieStore.delete("cartToken");
+
         await prisma.user.create({
           data: {
             email: user.email,
@@ -151,7 +171,7 @@ export const authOptions: AuthOptions = {
 
       if (!token.email) {
         return token;
-      } 
+      }
 
       const findUser = await prisma.user.findUnique({
         where: { email: token.email },
@@ -166,7 +186,7 @@ export const authOptions: AuthOptions = {
         token.firstName = findUser.firstName;
         token.lastName = findUser.lastName;
         token.role = findUser.role;
-        
+
         // Add cart token to JWT if user has a cart
         if (findUser.carts) {
           token.cartToken = findUser.carts.token;
@@ -180,7 +200,7 @@ export const authOptions: AuthOptions = {
         session.user.role = token.role as UserRole;
         session.user.firstName = token.firstName as string;
         session.user.lastName = token.lastName as string;
-        
+
         // Add cartToken to session
         if (token.cartToken) {
           session.cartToken = token.cartToken as string;

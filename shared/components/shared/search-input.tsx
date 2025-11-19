@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/shared/lib/utils";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import React, { useRef, useState } from "react";
 import { useClickAway, useDebounce } from "react-use";
 import { Api } from "@/shared/services/api-client";
@@ -11,18 +11,22 @@ import { KeyboardWithVariants } from "@/@types/api";
 
 interface Props {
   className?: string;
+  onMobileExpand?: (expanded: boolean) => void;
 }
 
-export const SearchInput: React.FC<Props> = ({ className }) => {
+export const SearchInput: React.FC<Props> = ({ className, onMobileExpand }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [focused, setFocused] = useState(false);
   const [keyboards, setKeyboards] = useState<KeyboardWithVariants[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMobileExpanded, setIsMobileExpanded] = useState(false);
   const ref = useRef(null);
 
   useClickAway(ref, () => {
-    setFocused(false);
-    setSearchQuery("");
+    if (!isMobileExpanded) {
+      setFocused(false);
+      setSearchQuery("");
+    }
   });
 
   useDebounce(
@@ -50,6 +54,25 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
     setFocused(false);
     setSearchQuery("");
     setKeyboards([]);
+    setIsMobileExpanded(false);
+    onMobileExpand?.(false);
+  };
+
+  const handleFocus = () => {
+    setFocused(true);
+    // Check if mobile viewport
+    if (window.innerWidth < 768) {
+      setIsMobileExpanded(true);
+      onMobileExpand?.(true);
+    }
+  };
+
+  const handleClose = () => {
+    setFocused(false);
+    setSearchQuery("");
+    setKeyboards([]);
+    setIsMobileExpanded(false);
+    onMobileExpand?.(false);
   };
 
   return (
@@ -57,14 +80,15 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
       {focused && (
         <div
           className="fixed inset-0 bg-black/50 z-20"
-          onClick={() => setFocused(false)}
+          onClick={handleClose}
         />
       )}
 
       <div
         ref={ref}
         className={cn(
-          "flex rounded-2xl flex-1 justify-between relative h-11 z-30",
+          "flex rounded-2xl justify-between relative h-11 z-30 transition-all duration-300",
+          isMobileExpanded ? "fixed left-[5%] right-[5%] top-4 w-[90%]" : "flex-1",
           className
         )}
       >
@@ -75,8 +99,18 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
           placeholder="Find Keyboard..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          onFocus={() => setFocused(true)}
+          onFocus={handleFocus}
         />
+
+        {isMobileExpanded && (
+          <button
+            onClick={handleClose}
+            className="absolute top-1/2 -translate-y-1/2 right-3 text-gray-400 hover:text-gray-600 transition-colors"
+            aria-label="Close search"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        )}
 
         {focused && searchQuery.trim().length > 0 && (
           <div

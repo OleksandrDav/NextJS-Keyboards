@@ -1,6 +1,7 @@
 import { Button } from "@/shared/components/ui";
 import { signIn } from "next-auth/react";
 import React from "react";
+import Image from "next/image";
 
 interface Props {
   className?: string;
@@ -23,10 +24,12 @@ export const OAuth: React.FC<Props> = ({ className }) => {
         type="button"
         onClick={handleGithubSignIn}
       >
-        <img 
+        <Image 
           className="w-6 h-6" 
           src="https://github.githubassets.com/favicon.ico" 
-          alt="Github" 
+          alt="Github"
+          width={24}
+          height={24}
         />
         Github
       </Button>
@@ -36,10 +39,12 @@ export const OAuth: React.FC<Props> = ({ className }) => {
         type="button"
         onClick={handleGoogleSignIn}
       >
-        <img 
+        <Image 
           className="w-6 h-6" 
           src="https://www.google.com/favicon.ico" 
-          alt="Google" 
+          alt="Google"
+          width={24}
+          height={24}
         />
         Google
       </Button>

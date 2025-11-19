@@ -265,13 +265,33 @@ export async function createUser(body: { email: string; firstName: string; lastN
       },
     });
 
+    const cookieStore = await cookies();
+    const cartToken = cookieStore.get("cartToken")?.value;
+
+    if (cartToken) {
+      const guestCart = await prisma.cart.findFirst({
+        where: {
+          token: cartToken,
+          userId: null,
+        },
+      });
+
+      if (guestCart) {
+        await prisma.cart.delete({
+          where: { id: guestCart.id },
+        });
+      }
+    }
+
+    cookieStore.delete("cartToken");
+
     const code = Math.floor(100000 + Math.random() * 900000).toString();
 
     await prisma.verificationCode.create({
       data: {
         userId: createdUser.id,
         code,
-        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), 
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
       },
     });
 

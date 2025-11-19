@@ -13,7 +13,7 @@ export const CheckoutPersonalInfoForm: React.FC<Props> = ({ className }) => {
         <FormInput name="firstName" placeholder="Enter your first name" className="text-base" />
         <FormInput name="lastName" placeholder="Enter your last name" className="text-base" />
         <FormInput name="email" placeholder="Enter your email address" className="text-base" />
-        <FormInput name="phone" placeholder="Enter your phone number" className="text-base" />
+        <FormInput name="phone" placeholder="Enter your phone number" className="text-base" type="tel" autoComplete="tel" />
       </div>
     </WhiteBlock>
   );

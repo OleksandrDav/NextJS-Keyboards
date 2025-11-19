@@ -42,7 +42,12 @@ export const Categories: React.FC<Props> = ({ className, layouts }) => {
   };
 
   return (
-    <div className={cn("inline-flex gap-1 bg-gray-50 p-1 rounded-2xl", className)}>
+    <div className={cn(
+      "flex gap-1 bg-gray-50 rounded-2xl",
+      "p-0.5 sm:p-1",
+      "w-full sm:w-auto",
+      className
+    )}>
       {layouts.map(({ name, id }) => {
         const slug = createSlug(name);
         const shortName = getShortLayoutName(name);
@@ -52,15 +57,18 @@ export const Categories: React.FC<Props> = ({ className, layouts }) => {
             key={id}
             onClick={() => scrollToCategory(slug)}
             className={cn(
-              "flex items-center font-bold h-11 rounded-2xl transition-colors",
-              "px-5 sm:px-5",
-              "min-w-[60px] sm:min-w-0",
+              "flex items-center justify-center font-bold rounded-2xl transition-colors",
+              "h-8 sm:h-11",
+              "px-3 sm:px-5",
+              "flex-1 sm:flex-none",
+              "sm:min-w-0",
+              "text-sm sm:text-base",
               categoryActiveId === id && "bg-white shadow-md shadow-gray-200 text-primary"
             )}
             type="button"
           >
             <span className="hidden sm:inline">{name}</span>
-            <span className="inline sm:hidden text-lg">{shortName}</span>
+            <span className="inline sm:hidden">{shortName}</span>
           </button>
         );
       })}

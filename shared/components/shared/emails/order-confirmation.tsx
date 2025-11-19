@@ -260,7 +260,7 @@ export const OrderConfirmationTemplate: React.FC<OrderConfirmationProps> = ({
         </div>
 
         <div className="footer">
-          <p>Thank you for choosing Next Pizza!</p>
+          <p>Thank you for choosing Next Keyboards!</p>
           <p>If you have any questions about your order, please contact our support team.</p>
           <p style={{ marginTop: '15px', color: '#999', fontSize: '12px' }}>
             This is an automated email. Please do not reply directly to this message.

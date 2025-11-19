@@ -217,7 +217,7 @@ export const OrderSuccessTemplate = ({
         </div>
 
         <div className="footer">
-          <p>Thank you for choosing Next Pizza!</p>
+          <p>Thank you for choosing Next Keyboards!</p>
           <p>If you have any questions, please don't hesitate to contact us.</p>
           <p style={{ marginTop: '15px', color: '#999', fontSize: '12px' }}>
             This is an automated email. Please do not reply.

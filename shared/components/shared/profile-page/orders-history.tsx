@@ -80,7 +80,7 @@ export const OrdersHistory: React.FC<Props> = ({ orders }) => {
                 </div>
               </CardHeader>
               
-              <CardContent className="p-6">
+              <CardContent className="p-6 pt-0">
                 <div className="space-y-6">
                   {/* Order Items */}
                   <div>

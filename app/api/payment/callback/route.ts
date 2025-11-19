@@ -146,7 +146,7 @@ export async function POST(req: NextRequest) {
       try {
         await sendEmail(
           order.email,
-          `Next Pizza / Your order #${order.id} was successful 🎉`,
+          `Next Keyboards / Your order #${order.id} was successful 🎉`,
           React.createElement(OrderSuccessTemplate, {
             orderId: order.id,
             customerName: `${order.firstName} ${order.lastName}`,

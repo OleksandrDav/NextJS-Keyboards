@@ -2,6 +2,7 @@
 
 import React from "react";
 import { cn } from "@/shared/lib/utils";
+import Image from "next/image";
 
 interface ColorVariant {
   id: string;
@@ -36,10 +37,13 @@ export const ColorSelector: React.FC<Props> = ({
     <>
       {/* Image container with relative positioning */}
       <div className="relative flex justify-center items-center h-[260px]">
-        <img
+        <Image
           className="w-full h-auto max-w-[260px] max-h-[260px] object-contain transition-opacity duration-300"
           src={currentImage}
           alt="Product"
+          width={260}
+          height={260}
+          priority
         />
         {/* Discount badge - positioned absolutely */}
         {discountPercentage > 0 && (

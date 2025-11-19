@@ -3,6 +3,11 @@ import { CheckoutItem } from "./checkout-item";
 import { CheckoutItemSkeleton } from "./checkout-item-skeleton";
 import { CartStateItem } from "@/shared/lib/get-cart-details";
 import { WhiteBlock } from "./white-block";
+import Image from "next/image";
+import { Title } from "../title";
+import { Button } from "../../ui";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 interface Props {
   items: CartStateItem[];
@@ -12,25 +17,34 @@ interface Props {
   className?: string;
 }
 
-export const CheckoutCartSummary: React.FC<Props> = ({ 
-  className, 
-  items, 
-  onClickCountButton, 
+export const CheckoutCartSummary: React.FC<Props> = ({
+  className,
+  items,
+  onClickCountButton,
   removeCartItem,
-  loading 
+  loading,
 }) => {
   return (
     <WhiteBlock title="Cart Summary" className={className}>
       <div className="flex flex-col gap-4">
         {loading ? (
           // Show 3 skeleton items while loading
-          Array.from({ length: 3 }).map((_, index) => (
-            <CheckoutItemSkeleton key={index} />
-          ))
+          Array.from({ length: 3 }).map((_, index) => <CheckoutItemSkeleton key={index} />)
         ) : items.length === 0 ? (
           // Empty state
-          <div className="text-center py-8 text-gray-500">
-            Your cart is empty
+          <div className="flex flex-col items-center justify-center w-72 mx-auto px-6">
+            <Image
+              src="/assets/images/Empty-Cart--Streamline-Bruxelles.png"
+              alt="Empty cart"
+              width={120}
+              height={120}
+            />
+            <Title size="sm" text="Your cart is empty" className="text-center font-bold my-2" />
+            <p className="text-center text-neutral-500 mb-5">Add some products to your cart to see them here.</p>
+            <Button className="w-56 h-12 text-base" size="lg">
+              <ArrowLeft className="w-5 mr-2" />
+              <Link href="/">Continue shopping</Link>
+            </Button>
           </div>
         ) : (
           // Actual items
