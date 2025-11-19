@@ -1,7 +1,6 @@
+import { Providers } from "@/shared/components/shared/providers";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "sonner";
-import { Providers } from "@/shared/components/shared/providers";
 
 const nunito = Nunito({
   subsets: ["cyrillic"],

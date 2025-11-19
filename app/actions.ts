@@ -2,19 +2,18 @@
 
 import { prisma } from "@/prisma/prisma-client";
 import { CheckoutFormValues } from "@/shared/components/shared/checkout/checkout-form-schema";
-import { cookies, headers } from "next/headers";
 import { OrderConfirmationTemplate } from "@/shared/components/shared/emails/order-confirmation";
-import { sendEmail } from "@/shared/lib/email-service";
-import { createPayment } from "@/shared/lib/payment-service";
-import React from "react";
-import { getUserSession } from "@/shared/lib/get-user-session";
-import { hashSync } from "bcrypt";
-import { Prisma } from "@prisma/client";
 import { UserVerification } from "@/shared/components/shared/emails/user-verification";
 import {
-  ProfileUpdateFormValues,
-  RegistrationFormValues,
+  ProfileUpdateFormValues
 } from "@/shared/components/shared/modals/auth-modal/forms/schema";
+import { sendEmail } from "@/shared/lib/email-service";
+import { getUserSession } from "@/shared/lib/get-user-session";
+import { createPayment } from "@/shared/lib/payment-service";
+import { Prisma } from "@prisma/client";
+import { hashSync } from "bcrypt";
+import { cookies, headers } from "next/headers";
+import React from "react";
 
 export async function createOrder(data: CheckoutFormValues) {
   try {

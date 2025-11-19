@@ -1,10 +1,9 @@
-import { Container, Filters, Title, TopBar, MobileControls } from "@/shared/components/shared";
+import { Container, Filters, MobileControls, TopBar } from "@/shared/components/shared";
 import { ProductGroupList } from "@/shared/components/shared/products-group-list";
-import { prisma } from "@/prisma/prisma-client";
-import { serializePrismaData } from "@/shared/lib/serialize";
-import { Suspense } from "react";
 import { findKeyboards, GetSearchParams } from "@/shared/lib/find-keyboards";
+import { serializePrismaData } from "@/shared/lib/serialize";
 import { Search } from "lucide-react";
+import { Suspense } from "react";
 
 export default async function Home({ searchParams }: { searchParams: Promise<GetSearchParams> }) {
   // Await searchParams here in the page component

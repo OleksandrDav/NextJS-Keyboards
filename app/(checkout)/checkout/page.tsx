@@ -11,11 +11,11 @@ import { CheckoutSidebar } from "@/shared/components/shared/checkout/checkout-si
 import { useCart } from "@/shared/hooks/use-cart";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 export default function CheckoutPage() {
-  const { totalAmount, items, updateItemQuantity, removeCartItem, onClickCountButton, loading } = useCart();
+  const { totalAmount, items, removeCartItem, onClickCountButton, loading } = useCart();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit = async (data: CheckoutFormValues) => {

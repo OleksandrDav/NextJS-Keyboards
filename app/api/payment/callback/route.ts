@@ -25,25 +25,26 @@ interface PayUNotification {
       phone?: string;
       firstName: string;
       lastName: string;
+      language?: string;
+    };
+    payMethod?: {
+      type: 'PBL' | 'CARD_TOKEN' | 'INSTALLMENTS' | string;
+      value?: string;
     };
     products: Array<{
       name: string;
       unitPrice: string;
       quantity: string;
-      colorVariant?: {
-        colorName: string;
-        imageUrl: string;
-      };
-      switch?: {
-        name: string;
-        type: string;
-      };
+      // optional custom fields specific to your shop (e.g., colorVariant, switch)
+      colorVariant?: { colorName: string; imageUrl: string };
+      switch?: { name: string; type: string };
     }>;
-    status: string;
+    status: 'PENDING' | 'WAITING_FOR_CONFIRMATION' | 'COMPLETED' | 'CANCELED' | string;
   };
-  localReceiptDateTime?: string;
-  properties?: any[];
+  localReceiptDateTime?: string; // present for COMPLETED status
+  properties?: { name: string; value: string }[];
 }
+
 
 // Verify PayU signature
 function verifyPayUSignature(body: string, signature: string): boolean {
