@@ -18,7 +18,7 @@ interface CartDrawerProps {
 }
 
 export function CartDrawer({ children, className }: CartDrawerProps) {
-  const { totalAmount, items, updateItemQuantity, removeCartItem, onClickCountButton } = useCart();
+  const { totalAmount, items, removeCartItem, onClickCountButton } = useCart();
   const [redirecting, setRedirecting] = React.useState(false);
 
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);

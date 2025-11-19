@@ -2,7 +2,7 @@
 
 import React from "react";
 import { cn } from "@/shared/lib/utils";
-import { Trash2Icon, X } from "lucide-react";
+import { Trash2Icon } from "lucide-react";
 import * as CheckoutItemDetails from "../cart-item-details";
 import { CartItemProps } from "../cart-item-details/cart-item-details.types";
 import { CartDrawerItem } from "../cart-drawer-item";
