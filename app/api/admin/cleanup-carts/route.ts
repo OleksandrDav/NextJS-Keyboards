@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/shared/lib/auth";
 import { cleanupOldGuestCarts, cleanupEmptyCarts, getCartStats } from "@/shared/lib/cleanup-carts";
 
 export async function POST(req: NextRequest) {

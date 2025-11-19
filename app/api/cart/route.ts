@@ -5,12 +5,12 @@ import { findOrCreateCart } from "@/shared/lib/find-or-create-cart";
 import { CreateCartItemValues } from "@/shared/services/dto/cart.dto";
 import { updateCartTotalAmount } from "@/shared/lib/update-cart-total-amount";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/shared/lib/auth";
 
 export async function GET(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
-    let token = req.cookies.get("cartToken")?.value;
+    const token = req.cookies.get("cartToken")?.value;
 
     // If user is logged in, use their cart
     if (session?.user?.id) {
