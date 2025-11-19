@@ -96,6 +96,12 @@ export const UserVerification: React.FC<UserVerificationProps> = ({ code }) => (
           color: #999999;
           margin: 5px 0;
         }
+        .company-info {
+          font-size: 13px;
+          color: #666666;
+          margin: 8px 0;
+          line-height: 1.5;
+        }
         .divider {
           height: 1px;
           background-color: #e9ecef;
@@ -106,25 +112,25 @@ export const UserVerification: React.FC<UserVerificationProps> = ({ code }) => (
     <body>
       <div className="email-container">
         <div className="header">
-          <h1>✉️ Подтверждение регистрации</h1>
+          <h1>✉️ Registration Confirmation</h1>
         </div>
         
         <div className="content">
-          <p className="greeting">Здравствуйте!</p>
+          <p className="greeting">Hello!</p>
           
           <p className="message">
-            Спасибо за регистрацию! Для завершения процесса регистрации, 
-            пожалуйста, подтвердите свой email адрес.
+            Thank you for registering! To complete the registration process, 
+            please confirm your email address.
           </p>
           
           <div className="code-container">
-            <div className="code-label">Ваш код подтверждения</div>
+            <div className="code-label">Your verification code</div>
             <div className="code">{code}</div>
           </div>
           
           <p className="message">
-            Вы можете ввести этот код на странице регистрации или просто 
-            нажать на кнопку ниже:
+            You can enter this code on the registration page or simply 
+            click the button below:
           </p>
           
           <div className="button-container">
@@ -132,20 +138,31 @@ export const UserVerification: React.FC<UserVerificationProps> = ({ code }) => (
               href={`http://localhost:3000/api/auth/verify?code=${code}`}
               className="verify-button"
             >
-              Подтвердить регистрацию
+              Verify Registration
             </a>
           </div>
           
           <div className="divider"></div>
           
           <p className="message" style={{ fontSize: '14px', color: '#999999' }}>
-            Если вы не регистрировались на нашем сайте, просто проигнорируйте это письмо.
+            If you did not register on our website, please ignore this email.
           </p>
         </div>
         
         <div className="footer">
-          <p className="footer-text">© 2024 Ваша Компания. Все права защищены.</p>
-          <p className="footer-text">Это автоматическое письмо, не отвечайте на него.</p>
+          <p className="footer-text" style={{ fontWeight: '600', color: '#333333' }}>Next Keyboards</p>
+          <p className="company-info">
+            Next Keyboards s.r.o.<br />
+            Hlavní 123, 110 00 Praha 1<br />
+            Czech Republic
+          </p>
+          <p className="company-info">
+            Email: support@nextkeyboards.com | Phone: +420 123 456 789
+          </p>
+          <p className="footer-text" style={{ marginTop: '15px' }}>
+            © 2024 Next Keyboards. All rights reserved.
+          </p>
+          <p className="footer-text">This is an automated email, please do not reply.</p>
         </div>
       </div>
     </body>
