@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next Keyboards ⌨️
 
-## Getting Started
+A modern, responsive keyboard e-commerce store built with Next.js, featuring seamless shopping experience across all devices.
 
-First, run the development server:
+## 🚀 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The application is currently deployed and accessible at: https://next-js-keyboards.vercel.app/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚠️ Important Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Email Verification
+- **Verification emails may land in your spam folder**. Please check your spam/junk folder if you don't see the verification email in your inbox.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Payment Testing
+For testing purposes, use the following test card details:
 
-## Learn More
+**Card Number:** `4444 3333 2222 1111`  
+**Expiry Date:** `12/29`  
+**CVV:** `123`
 
-To learn more about Next.js, take a look at the following resources:
+### Development & Testing
+- When switching between **touch screen** and **desktop** modes in browser dev tools, **please reload the page** to ensure optimal feature performance and proper UI rendering.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Modern, responsive design
+- Secure payment processing
+- User authentication with email verification
+- Cross-device compatibility
+- Optimized keyboard shopping experience 😂
 
-## Deploy on Vercel
+## 🎯 Usage Tips
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- For best experience, allow the page to fully load when switching device modes
+- Ensure JavaScript is enabled for all features to work properly
+- Clear browser cache if experiencing any display issues
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Technical Notes
+
+- Built with Next.js for optimal performance
+- Responsive design adapts to all screen sizes
+- Secure payment integration
+- Real-time form validation
+
+---
+
+**Note:** This is a demo project for testing and demonstration purposes. Use only test payment details provided above.
+
+For any issues or questions, please check the console for errors and ensure all prerequisites are met.
