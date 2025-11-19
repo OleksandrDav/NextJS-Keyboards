@@ -1,14 +1,13 @@
 "use client";
 
-import { Keyboard } from "@prisma/client";
-import React from "react";
-import { cn } from "@/shared/lib/utils";
+import { KeyboardWithRelations } from "@/@types/keyboard";
 import { Dialog } from "@/shared/components/ui";
 import { DialogContent, DialogTitle } from "@/shared/components/ui/dialog";
+import { cn } from "@/shared/lib/utils";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { useRouter } from "next/navigation";
+import React from "react";
 import { ChooseKeyboardModalContent } from "./choose-keyboard-modal-content";
-import { KeyboardWithRelations } from "@/@types/keyboard";
 
 interface Props {
   keyboard: KeyboardWithRelations;
