@@ -135,7 +135,7 @@ export const UserVerification: React.FC<UserVerificationProps> = ({ code }) => (
           
           <div className="button-container">
             <a 
-              href={`http://localhost:3000/api/auth/verify?code=${code}`}
+              href={`https://next-js-keyboards.vercel.app/api/auth/verify?code=${code}`}
               className="verify-button"
             >
               Verify Registration
